@@ -1,11 +1,10 @@
 {{ define "main" }}
 <content>
-  {{ if .Parent }}
+  {{ if and .Parent .Parent.Parent (not .Parent.Parent.IsHome) }}
   <p>
     <a href="{{ .Parent.Permalink }}">{{ .Parent.Title }}</a>
   </p>
   {{ end }}
-
   <h1>{{ .Title }}</h1>
 
   {{ $start := .Date }}
@@ -33,12 +32,22 @@
   {{ .Content }}
 
   {{ if .Sections }}
-    <h3>{{ if .IsHome }}Events{{ else }}Editions{{ end }}</h3>
+    <h3>Editions</h3>
     <ul class="blog-posts">
       {{ range .Sections.ByDate.Reverse }}
       <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
       {{ end }}
     </ul>
+
+    <h3>All sets</h3>
+    {{ range .RegularPagesRecursive.ByDate.Reverse }}
+    <div style="margin-bottom:2em">
+      <a href="{{ .Permalink }}"><strong>{{ partial "set-title.html" . }}</strong></a>
+      {{ partial "player.html" . }}
+    </div>
+    {{ else }}
+    <p>No sets yet</p>
+    {{ end }}
   {{ else }}
     <h3>Sets</h3>
     {{ range .Pages.ByDate.Reverse }}

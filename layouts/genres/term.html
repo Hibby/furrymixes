@@ -1,7 +1,5 @@
 {{ define "main" }}
 <content>
-  <p><a href="{{ "genres" | relURL }}">Genres</a></p>
-
   <h1>{{ .Title }}</h1>
   {{ with .Content }}<p>{{ . }}</p>{{ end }}
 

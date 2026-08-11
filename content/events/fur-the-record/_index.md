@@ -5,5 +5,5 @@ cascade:
     eventSeries: "Fur the Record"
 ---
 
-Fur the Record is a quarterly event run in Scotland by FURN, the Furry
+Fur the Record is a semi-annual underground rave in Scotland by FURN, the Furry
 Underground Rave Network

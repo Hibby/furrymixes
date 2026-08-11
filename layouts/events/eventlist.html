@@ -1,0 +1,16 @@
+{{ define "main" }}
+<content>
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+
+  <ul style="list-style: none; padding: 0;">
+    {{ range .Sections.ByTitle }}
+    <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+
+  {{ with .OutputFormats.Get "rss" }}
+    <p><a href="{{ .RelPermalink }}">RSS feed for all events</a></p>
+  {{ end }}
+</content>
+{{ end }}
