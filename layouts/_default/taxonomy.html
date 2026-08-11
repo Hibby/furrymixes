@@ -1,0 +1,12 @@
+{{ define "main" }}
+<content>
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+
+  <ul style="columns: 2; column-gap: 2em; list-style: none; padding: 0;">  
+    {{ range .Pages.ByTitle }}
+    <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+</content>
+{{ end }}

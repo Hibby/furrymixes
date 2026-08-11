@@ -1,0 +1,12 @@
+{{ $p := . }}
+{{ if $p.Title }}
+  {{ $p.Title }}
+{{ else }}
+  {{ $artistNames := slice }}
+  {{ range $p.GetTerms "artists" }}
+    {{ $artistNames = $artistNames | append .Title }}
+  {{ end }}
+  {{ $artists := delimit $artistNames ", " }}
+  {{ $event := $p.Parent.Parent }}
+  {{ printf "%s — Live at %s (%s)" $artists $event.Title ($p.Date.Format "02 Jan 2006") }}
+{{ end }}

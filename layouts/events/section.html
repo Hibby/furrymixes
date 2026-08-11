@@ -1,0 +1,58 @@
+{{ define "main" }}
+<content>
+  {{ if .Parent }}
+  <p>
+    <a href="{{ .Parent.Permalink }}">{{ .Parent.Title }}</a>
+  </p>
+  {{ end }}
+
+  <h1>{{ .Title }}</h1>
+
+  {{ $start := .Date }}
+  {{ if not $start.IsZero }}
+  <p>
+    {{ with .Params.endDate }}
+      {{ $end := . | time.AsTime }}
+      {{ if ne ($end.Format "2006-01-02") ($start.Format "2006-01-02") }}
+        {{ if and (eq $start.Year $end.Year) (eq $start.Month $end.Month) }}
+          {{/* Same month & year: "12–15 Jun 2025" */}}
+          <time datetime='{{ $start.Format "2006-01-02" }}'>{{ $start.Format "02" }}</time>–<time datetime='{{ $end.Format "2006-01-02" }}'>{{ $end.Format "02 Jan 2006" }}</time>
+        {{ else }}
+          {{/* Different month or year: full dates both sides */}}
+          <time datetime='{{ $start.Format "2006-01-02" }}'>{{ $start.Format "02 Jan 2006" }}</time> – <time datetime='{{ $end.Format "2006-01-02" }}'>{{ $end.Format "02 Jan 2006" }}</time>
+        {{ end }}
+      {{ else }}
+        <time datetime='{{ $start.Format "2006-01-02" }}'>{{ $start.Format (default "02 Jan 2006" $.Site.Params.dateFormat) }}</time>
+      {{ end }}
+    {{ else }}
+      <time datetime='{{ $start.Format "2006-01-02" }}'>{{ $start.Format (default "02 Jan 2006" $.Site.Params.dateFormat) }}</time>
+    {{ end }}
+  </p>
+  {{ end }}
+
+  {{ .Content }}
+
+  {{ if .Sections }}
+    <h3>{{ if .IsHome }}Events{{ else }}Editions{{ end }}</h3>
+    <ul class="blog-posts">
+      {{ range .Sections.ByDate.Reverse }}
+      <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+      {{ end }}
+    </ul>
+  {{ else }}
+    <h3>Sets</h3>
+    {{ range .Pages.ByDate.Reverse }}
+    <div style="margin-bottom:2em">
+      <a href="{{ .Permalink }}"><strong>{{ partial "set-title.html" . }}</strong></a>
+      {{ partial "player.html" . }}
+    </div>
+    {{ else }}
+    <p>No sets yet</p>
+    {{ end }}
+  {{ end }}
+
+  {{ with .OutputFormats.Get "rss" }}
+    <p><a href="{{ .RelPermalink }}">RSS feed for this {{ if $.Sections }}listing{{ else }}edition{{ end }}</a></p>
+  {{ end }}
+</content>
+{{ end }}

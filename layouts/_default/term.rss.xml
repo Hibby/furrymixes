@@ -1,0 +1,26 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ .Title }} — {{ .Site.Title }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>Sets tagged {{ .Title }}</description>
+    <generator>Hugo -- gohugo.io</generator>
+    {{ range .Pages }}
+    <item>
+      <title>{{ partial "set-title.html" . }}</title>
+      <link>{{ .Permalink }}</link>
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      <guid>{{ .Permalink }}</guid>
+      <description>
+  	{{ with .Params.embed }}
+    	 {{ if eq .platform "mixcloud" }}
+      	   &lt;p&gt;&lt;a href="https://www.mixcloud.com{{ .feed }}"&gt;Listen on Mixcloud&lt;/a&gt;&lt;/p&gt;
+    	  {{ else if eq .platform "soundcloud" }}
+      	   &lt;p&gt;&lt;a href="{{ .url }}"&gt;Listen on SoundCloud&lt;/a&gt;&lt;/p&gt;
+    	 {{ end }}
+  	{{ end }}
+  	{{ .Summary | html }}
+</description>
+    </item>
+    {{ end }}
+  </channel>
+</rss>

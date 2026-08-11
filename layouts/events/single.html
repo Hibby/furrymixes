@@ -1,0 +1,32 @@
+{{ define "main" }}
+<content>
+  {{ $edition := .Parent }}
+  {{ $event := .Parent.Parent }}
+  {{ $artists := delimit .Params.artists ", " }}
+  <p>
+    Back to: <a href="{{ $event.Permalink }}">{{ $event.Title }}</a>
+    →
+    <a href="{{ $edition.Permalink }}">{{ $edition.Title }}</a>
+  </p>
+
+  <h1>{{ partial "set-title.html" . }}</h1>
+  {{ with .GetTerms "artists" }}
+  <p>
+    Artists:
+    {{ range . }}<a href="{{ .RelPermalink }}">{{ .Title }}</a> {{ end }}
+  </p>
+  {{ end }}
+
+  {{ with .GetTerms "genres" }}
+  <p>
+    Genres:
+    {{ range . }}<a href="{{ .RelPermalink }}">{{ .Title }}</a> {{ end }}
+  </p>
+  {{ end }}
+
+  {{ partial "player.html" . }}
+
+  {{ .Content }}
+
+</content>
+{{ end }}

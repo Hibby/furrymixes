@@ -1,0 +1,28 @@
+{{ define "main" }}
+<content>
+  <p>Back to: <a href="{{ "artists" | relURL }}">Artists</a></p>
+  <h1>{{ .Title }}</h1>
+  {{ with .Params.socials }}
+  <p>
+    {{ range . }}
+      <a href="{{ .url }}">{{ .platform }}</a>&nbsp;
+    {{ end }}
+  </p>
+  {{ end }}
+  {{ .Content }}
+
+  <h3>Sets</h3>
+  {{ range .Pages.ByDate.Reverse }}
+  <div style="margin-bottom:2em">
+    <a href="{{ .Permalink }}"><strong>{{ partial "set-title.html" . }}</strong></a>
+    {{ partial "player.html" . }}
+  </div>
+  {{ else }}
+  <p>No sets yet</p>
+  {{ end }}
+
+  {{ with .OutputFormats.Get "rss" }}
+  <p><a href="{{ .RelPermalink }}">RSS feed for {{ $.Title }}</a></p>
+  {{ end }}
+</content>
+{{ end }}

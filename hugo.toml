@@ -1,0 +1,42 @@
+baseURL = 'https://furrymix.es'
+locale = 'en-us'
+title = 'FurryMix.es'
+theme = "hugo-bearblog"
+copyright = "Røde (CC BY 4.0)"
+enableRobotsTXT = true
+
+[taxonomies]
+  genre = "genres"
+  artist = "artists"
+  year = "year"
+
+[params]
+  description = "A live-set archive from furry events"
+  favicon = "images/favicon.png"
+  dateFormat = "Jan 2, 2006"
+
+  [params.author]
+    name = "Røde"
+    email = "rode@foxk.it"
+
+[menu]
+  [[menu.main]]
+    name = "Sets"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Events"
+    url = "/events/"
+    weight = 2
+  [[menu.main]]
+    name = "Artists"
+    url = "/artists/"
+    weight = 3
+  [[menu.main]]
+    name = "Genres"
+    url = "/genres/"
+    weight = 4
+  [[menu.main]]
+    name = "Overall RSS"
+    url = "/index.xml"
+    weight = 5

@@ -1,0 +1,18 @@
+{{ define "main" }}
+<content>
+  {{ .Content }}
+
+  {{ $sets := where site.RegularPages "Type" "events" }}
+
+  <h3>Latest sets</h3>
+  {{ range $sets.ByDate.Reverse }}
+  <div style="margin-bottom:2em">
+    <a href="{{ .Permalink }}"><strong>{{ partial "set-title.html" . }}</strong></a>
+    {{ partial "player.html" . }}
+  </div>
+  {{ else }}
+  <p>No sets yet</p>
+  {{ end }}
+
+</content>
+{{ end }}
