@@ -40,3 +40,7 @@ enableRobotsTXT = true
     name = "Overall RSS"
     url = "/index.xml"
     weight = 5
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
