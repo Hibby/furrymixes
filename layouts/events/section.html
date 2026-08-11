@@ -5,8 +5,10 @@
     <a href="{{ .Parent.Permalink }}">{{ .Parent.Title }}</a>
   </p>
   {{ end }}
+
   <h1>{{ .Title }}</h1>
 
+  {{ if not .Sections }}
   {{ $start := .Date }}
   {{ if not $start.IsZero }}
   <p>
@@ -27,6 +29,7 @@
       <time datetime='{{ $start.Format "2006-01-02" }}'>{{ $start.Format (default "02 Jan 2006" $.Site.Params.dateFormat) }}</time>
     {{ end }}
   </p>
+  {{ end }}
   {{ end }}
 
   {{ .Content }}
