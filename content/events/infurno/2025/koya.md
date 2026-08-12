@@ -13,7 +13,7 @@ date: 2025-06-14T14:00:00+01:00
 # Required. Must match the slug of an existing content/artists/<slug>/_index.md
 # if you want the artist's proper name + bio + socials to resolve correctly.
 # Multiple artists for a B2B: artists: ["dj-name", "meowmix"]
-artists: ["Foxsoup"]
+artists: ["Koya"]
 
 # Required. Match existing pinned genre pages where possible (check
 # content/genres/ for what's already there) so terms merge rather than
