@@ -1,5 +1,5 @@
 ---
-title: "After Dark September 2025"
+title: "Londonfurs After Dark September 2025"
 date: 2025-09-20
 ---
 
