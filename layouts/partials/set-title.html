@@ -7,6 +7,18 @@
     {{ $artistNames = $artistNames | append .Title }}
   {{ end }}
   {{ $artists := delimit $artistNames ", " }}
+  {{ $edition := $p.Parent }}
   {{ $event := $p.Parent.Parent }}
-  {{ printf "%s — Live at %s (%s)" $artists $event.Title ($p.Date.Format "02 Jan 2006") }}
+
+  {{ $hasTime := or (ne $p.Date.Hour 0) (ne $p.Date.Minute 0) }}
+  {{ $when := $p.Date.Format "Monday" }}
+  {{ if $hasTime }}
+    {{ $when = printf "%s, %s" ($p.Date.Format "Monday") ($p.Date.Format "15:04") }}
+  {{ end }}
+
+  {{ if $edition.Params.venue }}
+    {{ printf "%s — Live at %s (%s) at %s" $artists $event.Title $when $edition.Params.venue }}
+  {{ else }}
+    {{ printf "%s — Live at %s (%s)" $artists $event.Title $when }}
+  {{ end }}
 {{ end }}
