@@ -8,7 +8,6 @@
   {{ end }}
   {{ $artists := delimit $artistNames ", " }}
   {{ $edition := $p.Parent }}
-  {{ $event := $p.Parent.Parent }}
 
   {{ $hasTime := or (ne $p.Date.Hour 0) (ne $p.Date.Minute 0) }}
   {{ $when := $p.Date.Format "Monday" }}
@@ -17,8 +16,8 @@
   {{ end }}
 
   {{ if $edition.Params.venue }}
-    {{ printf "%s — Live at %s (%s) at %s" $artists $event.Title $when $edition.Params.venue }}
+    {{ printf "%s — Live at %s (%s) at %s" $artists $edition.Title $when $edition.Params.venue }}
   {{ else }}
-    {{ printf "%s — Live at %s (%s)" $artists $event.Title $when }}
+    {{ printf "%s — Live at %s (%s)" $artists $edition.Title $when }}
   {{ end }}
 {{ end }}
