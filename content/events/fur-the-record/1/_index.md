@@ -1,6 +1,7 @@
 ---
 title: "Fur the Record 1"
 date: 2024-06-22
+website: "https://ftr1.furnevents.org/"
 ---
 
 Bringing the furry community in Scotland together for a fun day of hard tunes, video games, and general furry revelry at The Flying Duck on 22nd June.

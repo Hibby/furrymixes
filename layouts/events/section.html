@@ -33,6 +33,9 @@
   {{ end }}
 
   {{ .Content }}
+  {{ with .Params.website }}
+  <p><a href="{{ . | safeURL }}">Official website</a></p>
+  {{ end }}
 
   {{ if .Sections }}
     <h3>Editions</h3>
