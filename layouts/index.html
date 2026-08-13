@@ -4,7 +4,7 @@
 
   {{ $sets := where site.RegularPages "Type" "events" }}
 
-  <h3>Latest sets</h3>
+  <h2>Latest Sets</h2>
   {{ range $sets.ByDate.Reverse }}
   <div style="margin-bottom:2em">
     <a href="{{ .Permalink }}"><strong>{{ partial "set-title.html" . }}</strong></a>

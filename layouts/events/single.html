@@ -23,6 +23,11 @@
     {{ range . }}<a href="{{ .RelPermalink }}">{{ .Title }}</a> {{ end }}
   </p>
   {{ end }}
+  {{ if .Params.venue }}
+  <p>
+  Venue: {{ .Params.venue }}
+  </p>
+  {{ end }}
 
   {{ partial "player.html" . }}
 

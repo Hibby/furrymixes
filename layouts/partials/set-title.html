@@ -15,8 +15,8 @@
     {{ $when = printf "%s, %s" ($p.Date.Format "Monday") ($p.Date.Format "15:04") }}
   {{ end }}
 
-  {{ if $edition.Params.venue }}
-    {{ printf "%s // %s (%s) at %s" $artists $edition.Title $when $edition.Params.venue }}
+  {{ if $p.Params.venue }}
+    {{ printf "%s // %s (%s) - %s Set" $artists $edition.Title $when $p.Params.venue }}
   {{ else }}
     {{ printf "%s // %s (%s)" $artists $edition.Title $when }}
   {{ end }}
