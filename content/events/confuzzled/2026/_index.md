@@ -1,5 +1,5 @@
 ---
-title: "Confuzzled 2026"
+title: "2026 - Confuzzled: The Musical"
 date: 2026-05-22
 endDate: 2026-05-26
 ---

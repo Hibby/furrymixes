@@ -1,5 +1,5 @@
 ---
-title: "Confuzzled 2025"
+title: "2025 - Fashion Week"
 date: 2025-05-23
 endDate: 2025-05-27
 ---
