@@ -1,9 +1,11 @@
 {{ $cover := .Resources.GetMatch "cover.*" }}
-{{ if $cover }}
-<div class="page-header">
-  <img src="{{ $cover.RelPermalink }}" alt="" class="page-header-img">
-  <span class="page-header-title">{{ .Title }}</span>
+<div class="page-header{{ if eq .Params.coverStyle "logo" }} page-header--logo{{ end }}">
+  {{ with $cover }}
+    {{ if eq $.Params.coverStyle "logo" }}
+      <img src="{{ .RelPermalink }}" alt="" class="page-header-img-contain">
+    {{ else }}
+      <img src="{{ .RelPermalink }}" alt="" class="page-header-img-cover">
+    {{ end }}
+  {{ end }}
 </div>
-{{ else }}
-<h1>{{ .Title }}</h1>
-{{ end }}
+<h1 style="text-align:center">{{ .Title }}</h1>

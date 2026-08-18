@@ -1,7 +1,8 @@
 {{ define "main" }}
 <content>
-  <h1>{{ .Title }}</h1>
+  {{ partial "page-header.html" . }}
   {{ .Content }}
-	{{ partial "card-grid.html" .Pages.ByTitle }}
+
+  {{ partial "card-grid.html" .Pages.ByTitle }}
 </content>
 {{ end }}

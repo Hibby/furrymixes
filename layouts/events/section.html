@@ -6,20 +6,18 @@
   </p>
   {{ end }}
 
-{{ partial "page-header.html" . }}
+  {{ partial "page-header.html" . }}
 
   {{ if not .Sections }}
   {{ $start := .Date }}
   {{ if not $start.IsZero }}
-  <p>
+  <p style="text-align:center">
     {{ with .Params.endDate }}
       {{ $end := . | time.AsTime }}
       {{ if ne ($end.Format "2006-01-02") ($start.Format "2006-01-02") }}
         {{ if and (eq $start.Year $end.Year) (eq $start.Month $end.Month) }}
-          {{/* Same month & year: "12–15 Jun 2025" */}}
           <time datetime='{{ $start.Format "2006-01-02" }}'>{{ $start.Format "02" }}</time>–<time datetime='{{ $end.Format "2006-01-02" }}'>{{ $end.Format "02 Jan 2006" }}</time>
         {{ else }}
-          {{/* Different month or year: full dates both sides */}}
           <time datetime='{{ $start.Format "2006-01-02" }}'>{{ $start.Format "02 Jan 2006" }}</time> – <time datetime='{{ $end.Format "2006-01-02" }}'>{{ $end.Format "02 Jan 2006" }}</time>
         {{ end }}
       {{ else }}
@@ -33,8 +31,9 @@
   {{ end }}
 
   {{ .Content }}
+
   {{ with .Params.website }}
-  <p><a href="{{ . | safeURL }}">Official website</a></p>
+  <p style="text-align:center"><a href="{{ . | safeURL }}">Official site</a></p>
   {{ end }}
 
   {{ if .Sections }}

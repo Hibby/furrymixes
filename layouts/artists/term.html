@@ -1,6 +1,9 @@
 {{ define "main" }}
 <content>
-  <h1>{{ .Title }}</h1>
+  <p><a href="{{ "artists" | relURL }}">Artists</a></p>
+
+  {{ partial "page-header.html" . }}
+
   {{ with .Params.socials }}
   <p>
     {{ range . }}
@@ -21,7 +24,7 @@
   {{ end }}
 
   {{ with .OutputFormats.Get "rss" }}
-  <p><a href="{{ .RelPermalink }}">RSS feed for {{ $.Title }}</a></p>
+    <p><a href="{{ .RelPermalink }}">RSS feed for {{ $.Title }}</a></p>
   {{ end }}
 </content>
 {{ end }}

@@ -1,13 +1,20 @@
 <div class="card-grid">
   {{ range . }}
+    {{ $page := . }}
     {{ $cover := .Resources.GetMatch "cover.*" }}
     <a href="{{ .Permalink }}" class="card">
-      {{ with $cover }}
-        <img src="{{ .RelPermalink }}" alt="" class="card-img">
-      {{ else }}
-        <div class="card-fallback"></div>
-      {{ end }}
-      <span class="card-title-bar"><span class="card-title">{{ .Title }}</span></span>
+      <div class="card-image-box{{ if eq $page.Params.coverStyle "logo" }} card-image-box--logo{{ end }}">
+        {{ with $cover }}
+          {{ if eq $page.Params.coverStyle "logo" }}
+            <img src="{{ .RelPermalink }}" alt="" class="card-img-contain">
+          {{ else }}
+            <img src="{{ .RelPermalink }}" alt="" class="card-img-cover">
+          {{ end }}
+        {{ else }}
+          <div class="card-fallback"></div>
+        {{ end }}
+      </div>
+      <span class="card-caption">{{ .Title }}</span>
     </a>
   {{ end }}
 </div>
