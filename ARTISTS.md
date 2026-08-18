@@ -7,6 +7,7 @@
 | Awkore | Mixcloud | https://www.mixcloud.com/AwkoreWolf/ |
 | Badwolf Brock | Mixcloud | https://www.mixcloud.com/BadwolfBrock/ |
 | Daratomic | Mixcloud | https://www.mixcloud.com/Daratomic/ |
+| DJ Blaidd | Soundcloud | https://soundcloud.com/djblaidd |
 | DJ Quest | Mixcloud | https://www.mixcloud.com/DjQuest666/ |
 | Floppiest Dog | Mixcloud | https://www.mixcloud.com/Flopdotdog/ |
 | Hommy | Mixcloud | https://www.mixcloud.com/HommerSnopsis/ |
@@ -18,6 +19,7 @@
 | Mallard | Mixcloud | https://www.mixcloud.com/DamnTazzle/ (posted on Tazzle's account, B2B set) |
 | MeowMix (Kittz + Px duo) | Mixcloud | https://www.mixcloud.com/pixel_p1x3l/ |
 | Px | Mixcloud | https://www.mixcloud.com/pixel_p1x3l/ |
+| Refferic | Mixcloud | https://www.mixcloud.com/Refferic/ |
 | Reivan | Mixcloud | https://www.mixcloud.com/ReivanLion/ |
 | Rivaclaw | Mixcloud | https://www.mixcloud.com/Rivaclaw/ |
 | Sable xox | SoundCloud | https://soundcloud.com/sablexox |
