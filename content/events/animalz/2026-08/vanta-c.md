@@ -2,7 +2,7 @@
 embed:
   url: "https://www.mixcloud.com/Vantac/club-animalz-882026-techno-set/"
 date: 2026-08-09
-artists: ["Joey"]
+artists: ["vanta-c"]
 genres: ["techno", "hypnotic techno", "dark techno", "hardgroove"]
 title: ""
 ---
