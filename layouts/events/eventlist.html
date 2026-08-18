@@ -1,13 +1,9 @@
 {{ define "main" }}
 <content>
-  <h1>{{ .Title }}</h1>
+  {{ partial "page-header.html" . }}
   {{ .Content }}
 
-  <ul style="list-style: none; padding: 0;">
-    {{ range .Sections.ByTitle }}
-    <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-    {{ end }}
-  </ul>
+  {{ partial "card-grid.html" .Sections.ByTitle }}
 
   {{ with .OutputFormats.Get "rss" }}
     <p><a href="{{ .RelPermalink }}">RSS feed for all events</a></p>

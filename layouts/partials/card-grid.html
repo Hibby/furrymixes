@@ -1,0 +1,13 @@
+<div class="card-grid">
+  {{ range . }}
+    {{ $cover := .Resources.GetMatch "cover.*" }}
+    <a href="{{ .Permalink }}" class="card">
+      {{ with $cover }}
+        <img src="{{ .RelPermalink }}" alt="" class="card-img">
+      {{ else }}
+        <div class="card-fallback"></div>
+      {{ end }}
+      <span class="card-title-bar"><span class="card-title">{{ .Title }}</span></span>
+    </a>
+  {{ end }}
+</div>

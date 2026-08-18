@@ -6,7 +6,7 @@
   </p>
   {{ end }}
 
-  <h1>{{ .Title }}</h1>
+{{ partial "page-header.html" . }}
 
   {{ if not .Sections }}
   {{ $start := .Date }}
@@ -39,11 +39,7 @@
 
   {{ if .Sections }}
     <h3>Editions</h3>
-    <ul class="blog-posts">
-      {{ range .Sections.ByDate.Reverse }}
-      <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-      {{ end }}
-    </ul>
+    {{ partial "card-grid.html" .Sections.ByDate.Reverse }}
 
     <h3>All sets</h3>
     {{ range .RegularPagesRecursive.ByDate.Reverse }}

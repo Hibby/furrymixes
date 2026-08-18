@@ -1,0 +1,42 @@
+{{ define "main" }}
+{{ if eq .Type "blog" }}{{ if not .Params.menu }}
+<h1>{{ .Title }}</h1>
+<p>
+  <i>
+    <time datetime='{{ .Date.Format "2006-01-02" }}'>
+      {{ .Date.Format (default "02 Jan, 2006" .Site.Params.dateFormat) }}
+    </time>
+  </i>
+</p>
+{{ end }}{{ end }}
+{{ if .Params.artists }}
+<p>
+  Artists:
+  {{ range .Params.artists }}
+    <a href="{{ "/artists/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>{{ if not (eq . (index $.Params.artists (sub (len $.Params.artists) 1))) }}, {{ end }}
+  {{ end }}
+</p>
+{{ end }}
+
+{{ if .Params.genres }}
+<p>
+  Genres:
+  {{ range .Params.genres }}
+    <a href="{{ "/genres/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>{{ if not (eq . (index $.Params.genres (sub (len $.Params.genres) 1))) }}, {{ end }}
+  {{ end }}
+</p>
+{{ end }}
+<content>
+  {{ .Content }}
+</content>
+
+{{ if eq .Type "blog" }}{{ if (.Param "enablePostNavigator")}}
+{{- partial "post_navigator.html" . -}}
+{{ end }}{{ end }}
+
+<p>
+  {{ range (.GetTerms "tags") }}
+  <a href="{{ .Permalink }}">#{{ .LinkTitle }}</a>
+  {{ end }}
+</p>
+{{ end }}

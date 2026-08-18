@@ -1,0 +1,9 @@
+{{ $cover := .Resources.GetMatch "cover.*" }}
+{{ if $cover }}
+<div class="page-header">
+  <img src="{{ $cover.RelPermalink }}" alt="" class="page-header-img">
+  <span class="page-header-title">{{ .Title }}</span>
+</div>
+{{ else }}
+<h1>{{ .Title }}</h1>
+{{ end }}
