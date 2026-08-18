@@ -3,6 +3,10 @@
 Furrymix.es is a website holding links to sets from internet animal people for
 you to listen to and enjoy whenever. 
 
+# Artists included
+
+See [ARTISTS.md](ARTISTS.md) for the list of artists and their mix/soundcloud.
+
 # Contribute
 
 Have I missed your set? Want to add some stuff? Need something in your artist
