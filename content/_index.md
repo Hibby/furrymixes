@@ -4,8 +4,7 @@ title: "Furry Mixes"
 
 Furrymix.es is a catalogue of DJ sets from furries around the world.
 
-There is a robot on [Mastodon](https://woof.tech/@furrymixes) which
-posts new mixes and a daily random mix, and cross posts to Bluesky.
+There is a robot on [Mastodon](https://woof.tech/@furrymixes) and [Bluesky](https://bsky.app/profile/furrymix.es) which posts new mixes and a daily random mix.
 
 If you feel your set, event, artist page or genre is missing, contact me on
 [fedi](https://woof.tech/@red), [bsky](https://bsky.app/profile/foxk.it) or if

@@ -2,7 +2,7 @@
 embed:
   url: "https://www.mixcloud.com/AceyWoofer/confuzzled-2026-the-big-night-opening-dance/"
 
-date: 2026-05-25
+date: 2026-05-23T22:00:00+0100
 
 artists: ["Acey"]
 
