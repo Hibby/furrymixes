@@ -35,6 +35,7 @@
 | Vesper | Mixcloud | https://www.mixcloud.com/noodlecollie/ |
 | Wisey | Mixcloud | https://www.mixcloud.com/Wiseydogg/ |
 | Yunas | Mixcloud | https://www.mixcloud.com/Yunas_Jet/ |
+| Ziggy | Mixcloud | https://www.mixcloud.com/djinnbanter/ |
 
 ## Notes
 

@@ -4,6 +4,7 @@ title = 'FurryMix.es'
 theme = "hugo-bearblog"
 copyright = "Røde (CC BY 4.0)"
 enableRobotsTXT = true
+ignoreFiles = ['uncategorised/']
 
 [taxonomies]
   genre = "genres"
