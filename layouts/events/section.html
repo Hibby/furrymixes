@@ -11,7 +11,7 @@
   {{ if not .Sections }}
   {{ $start := .Date }}
   {{ if not $start.IsZero }}
-  <p style="text-align:center">
+  <p style="text-align:left">
     {{ with .Params.endDate }}
       {{ $end := . | time.AsTime }}
       {{ if ne ($end.Format "2006-01-02") ($start.Format "2006-01-02") }}
@@ -29,12 +29,12 @@
   </p>
   {{ end }}
   {{ end }}
+  {{ with .Params.website }}
+  <p style="text-align:left"><a href="{{ . | safeURL }}">Official site</a></p>
+  {{ end }}
+
 
   {{ .Content }}
-
-  {{ with .Params.website }}
-  <p style="text-align:center"><a href="{{ . | safeURL }}">Official site</a></p>
-  {{ end }}
 
   {{ if .Sections }}
     <h3>Editions</h3>

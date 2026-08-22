@@ -6,6 +6,7 @@
 | Astril | Mixcloud | https://www.mixcloud.com/4STRIL/ |
 | Awkore | Mixcloud | https://www.mixcloud.com/AwkoreWolf/ |
 | Badwolf Brock | Mixcloud | https://www.mixcloud.com/BadwolfBrock/ |
+| BitFox | Mixcloud | https://www.mixcloud.com/bit-fox/ |
 | Daratomic | Mixcloud | https://www.mixcloud.com/Daratomic/ |
 | DJ Blaidd | Soundcloud | https://soundcloud.com/djblaidd |
 | DJ Quest | Mixcloud | https://www.mixcloud.com/DjQuest666/ |
@@ -26,6 +27,7 @@
 | Sable xox | SoundCloud | https://soundcloud.com/sablexox |
 | Sable xox | Mixcloud | https://www.mixcloud.com/Sablexox/ |
 | Shovel | Mixcloud | https://www.mixcloud.com/shovel-/ |
+| Sly | Mixcloud | https://www.mixcloud.com/thatslymf/ |
 | Sora | Mixcloud | https://www.mixcloud.com/sorathebun/ |
 | Sylvix | Mixcloud | https://www.mixcloud.com/sylvix/ |
 | Tazzle | Mixcloud | https://www.mixcloud.com/DamnTazzle/ |
