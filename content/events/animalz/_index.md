@@ -4,6 +4,9 @@ cascade:
   params:
     eventSeries: "Club Animalz"
 website: "https://www.clubanimalz.com/"
+imageCredit:
+    text: "Animalz"
+    url: "https://www.clubanimalz.com"
 ---
 Animalz is an exuberant club night for wild people to become themselves, uniting
 furries, pups and kinksters. 

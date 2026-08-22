@@ -3,6 +3,8 @@ title: "Koya"
 socials:
   - platform: "Mixcloud"
     url: "https://www.mixcloud.com/koyapaws/"
+imageCredit:
+  text: "Koya"
 ---
 
 A DJ and vinyl collector, wide-ranging - or perhaps just unfocused and easily
