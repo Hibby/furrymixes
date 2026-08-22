@@ -1,5 +1,5 @@
 ---
-title: "DJ Acey Woof"
+title: "DJ Acey Woofer"
 socials:
   - platform: "Mixcloud"
     url: "https://www.mixcloud.com/AceyWoofer/"
