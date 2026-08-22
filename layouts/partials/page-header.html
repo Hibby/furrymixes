@@ -8,4 +8,7 @@
     {{ end }}
   {{ end }}
 </div>
+{{ with .Params.imageCredit }}
+<p class="image-credit">Image from: <a href="{{ .url | safeURL }}">{{ .text }}</a></p>
+{{ end }}
 <h1 style="text-align:center">{{ .Title }}</h1>
