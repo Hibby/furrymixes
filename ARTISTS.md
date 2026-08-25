@@ -14,6 +14,7 @@
 | Gale | Mixcloud | https://www.mixcloud.com/GaleTheAlpaca |
 | Hommy | Mixcloud | https://www.mixcloud.com/HommerSnopsis/ |
 | Kallax | Mixcloud | https://www.mixcloud.com/snowy1256/ |
+| Kiba | Mixcloud | https://www.mixcloud.com/Raily_Kiba/ |
 | Kiffy | Mixcloud | https://www.mixcloud.com/kiffylee/ |
 | Kittz | Mixcloud | https://www.mixcloud.com/kittz/ |
 | Koya | Mixcloud | https://www.mixcloud.com/koyapaws/ |
