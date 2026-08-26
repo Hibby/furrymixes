@@ -14,6 +14,7 @@
 | Gale | Mixcloud | https://www.mixcloud.com/GaleTheAlpaca |
 | Hommy | Mixcloud | https://www.mixcloud.com/HommerSnopsis/ |
 | Kallax | Mixcloud | https://www.mixcloud.com/snowy1256/ |
+| KanaMau | Mixcloud | https://www.mixcloud.com/kanamau/ |
 | Kiba | Mixcloud | https://www.mixcloud.com/Raily_Kiba/ |
 | Kiffy | Mixcloud | https://www.mixcloud.com/kiffylee/ |
 | Kittz | Mixcloud | https://www.mixcloud.com/kittz/ |
@@ -30,13 +31,17 @@
 | Shovel | Mixcloud | https://www.mixcloud.com/shovel-/ |
 | Sly | Mixcloud | https://www.mixcloud.com/thatslymf/ |
 | Sora | Mixcloud | https://www.mixcloud.com/sorathebun/ |
+| Spiroou | Mixcloud | https://www.mixcloud.com/Spriou333/ |
+| Swolf | Mixcloud | https://www.mixcloud.com/djswolfuk/ |
 | Sylvix | Mixcloud | https://www.mixcloud.com/sylvix/ |
+| Teo | Mixcloud | https://www.mixcloud.com/TeoTheHyena/ |
 | Tazzle | Mixcloud | https://www.mixcloud.com/DamnTazzle/ |
 | Threadfiend | SoundCloud | https://soundcloud.com/threadfiend |
 | Toby Dingo | Mixcloud | https://www.mixcloud.com/TobyDingo/ |
 | Vanta-c | Mixcloud | https://www.mixcloud.com/Vantac/ |
 | Vesper | Mixcloud | https://www.mixcloud.com/noodlecollie/ |
 | Wisey | Mixcloud | https://www.mixcloud.com/Wiseydogg/ |
+| Yote Club | Mixcloud | https://www.mixcloud.com/YOTECLUB/ |
 | Yunas | Mixcloud | https://www.mixcloud.com/Yunas_Jet/ |
 | Ziggy | Mixcloud | https://www.mixcloud.com/djinnbanter/ |
 
