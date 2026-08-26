@@ -3,7 +3,7 @@ embed:
   url: "https://www.mixcloud.com/Flopdotdog/sunset-doggy-dnb/"
 date: 2026-08-19
 artists: ["Floppiest Dog"]
-genres: ["drum and bass", "ambient drum and bass", "liquid drum and bass", "jungle"]
+genres: ["drum & bass", "ambient drum & bass", "liquid drum & bass", "jungle"]
 title: "Sunset Doggy DnB"
 ---
 

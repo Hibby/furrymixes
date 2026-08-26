@@ -3,7 +3,7 @@ embed:
   url: "https://www.mixcloud.com/noodlecollie/confuzzled-2025-liquid-drum-bass/"
 date: 2025-06-24
 artists: ["Vesper"]
-genres: ["liquid drum and bass"]
+genres: ["liquid drum & bass"]
 title: ""
 ---
 

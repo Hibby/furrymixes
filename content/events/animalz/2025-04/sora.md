@@ -3,7 +3,7 @@ embed:
   url: "https://www.mixcloud.com/sorathebun/nightfall-live-animalz-manchester-april-2025/"
 date: 2025-04-11
 artists: ["Sora"]
-genres: ["drum and bass", "neurofunk"]
+genres: ["drum & bass", "neurofunk"]
 title: ""
 venue: "Sub 101"
 ---

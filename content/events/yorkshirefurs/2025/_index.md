@@ -1,7 +1,6 @@
 ---
 title: "YorkshireFurs: Tails and Togas"
 date: 2025-08-16
-coverStyle: "logo"
 imageCredit:
     text: "Yorkshirefurs"
 website: "https://2025.yorkshirefurs.org.uk"

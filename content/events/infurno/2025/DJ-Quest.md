@@ -14,7 +14,7 @@ artists: ["DJ Quest"]
 # Required. Match existing pinned genre pages where possible (check
 # content/genres/ for what's already there) so terms merge rather than
 # splinter into near-duplicates (e.g. "Mash Up" vs "mash ups").
-genres: ["Jungle","Drum & Bass", "footwork"]
+genres: ["Jungle","Drum & Bass","footwork"]
 
 # Required for the player to render. platform is either "mixcloud" or "soundcloud".
 # url is the full page URL either way, e.g.
@@ -26,9 +26,4 @@ embed:
   height: # for soundcloud only
 ---
 
-<!-- One or two sentences on the set — venue, vibe, occasion. -->
 
-## Tracklist
-1.
-2.
-3.

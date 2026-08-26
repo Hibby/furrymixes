@@ -1,7 +1,6 @@
 ---
 title: "YorkshireFurs: Class of 2026"
 date: 2026-08-22
-coverStyle: "logo"
 ---
 
 ## Class of 2026: It's time to graduate from uni*fur*sity!

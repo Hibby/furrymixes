@@ -25,10 +25,3 @@ embed:
   url: "https://www.mixcloud.com/pixel_p1x3l/infurno-25-big-beats-are-the-best/"
   height: # for soundcloud only
 ---
-
-<!-- One or two sentences on the set — venue, vibe, occasion. -->
-
-## Tracklist
-1.
-2.
-3.

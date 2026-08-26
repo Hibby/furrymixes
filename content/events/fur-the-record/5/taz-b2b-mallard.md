@@ -26,9 +26,3 @@ embed:
   height: # for soundcloud only
 ---
 
-<!-- One or two sentences on the set — venue, vibe, occasion. -->
-
-## Tracklist
-1.
-2.
-3.
