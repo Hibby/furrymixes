@@ -24,6 +24,7 @@
 | Liamm | Mixcloud | https://www.mixcloud.com/dj-byksr/ | https://bsky.app/profile/liammthecat.bsky.social |
 | Mallard | Mixcloud | https://www.mixcloud.com/gryphonalpha/ | |
 | MeowMix (Kittz + Px duo) | Mixcloud | https://www.mixcloud.com/pixel_p1x3l/ | |
+| Nippy | Mixcloud | https://www.mixcloud.com/nipmint | https://bsky.app/profile/nipmint.bsky.social |
 | Pho | Mixcloud | https://www.mixcloud.com/Phozon/ | https://bsky.app/profile/phocat.bsky.social |
 | Px | Mixcloud | https://www.mixcloud.com/pixel_p1x3l/ | https://bsky.app/profile/pixelpixel.cat |
 | Refferic | Mixcloud | https://www.mixcloud.com/Refferic/ | https://bsky.app/profile/refferic.bsky.social |
@@ -32,6 +33,7 @@
 | Sable xox | SoundCloud | https://soundcloud.com/sablexox | |
 | Sable xox | Mixcloud | https://www.mixcloud.com/Sablexox/ | |
 | Shovel | Mixcloud | https://www.mixcloud.com/shovel-/ | |
+| Slate | Mixcloud | https://www.mixcloud.com/SlateTheFennec/ | https://bsky.app/profile/slatethefennec.bsky.social |
 | Sly | Mixcloud | https://www.mixcloud.com/thatslymf/ | https://bsky.app/profile/darrenxfire.bsky.social |
 | Sora | Mixcloud | https://www.mixcloud.com/sorathebun/ | https://bsky.app/profile/sorathebun.com |
 | Spirou | Mixcloud | https://www.mixcloud.com/Spirou333/ | https://bsky.app/profile/spirou.today |
