@@ -7,10 +7,21 @@ structure where possible. Mixes with "demo" in the title/slug are treated as
 event-less and filed under content/uncategorised/mixes/ instead, with the
 mix's own title and upload date pre-filled.
 
+The DJ's own description (the part before any "Tracklist" heading) is
+written both into the front matter `description` field -- which feeds the
+site's SEO/OG meta description automatically -- and into the visible page
+body, so it's not lost to a human reading the page. Whatever follows a
+"Tracklist" heading in the source is carried across verbatim into the
+body's own "## Tracklist" section, whether it's a numbered list or a plain
+sentence of artist names -- no reformatting is attempted either way. If no
+tracklist heading is found, the old empty "1. \n2. \n3." placeholder is
+used instead, same as before.
+
 Usage:
     python3 scripts/fetch_new_mixes.py [--dry-run] [--artist "Name"]
 """
 import argparse
+import html
 import json
 import re
 import sys
@@ -30,6 +41,9 @@ UNCATEGORISED_DIR = CONTENT / "uncategorised"
 USER_AGENT = "furrymixes-fetch-new-mixes/1.0 (+https://furrymix.es)"
 
 DEMO_RE = re.compile(r"\bdemo\b", re.IGNORECASE)
+TRACKLIST_HEADING_RE = re.compile(
+    r"^\s*#{0,3}\s*tracklist\s*:?\s*$", re.IGNORECASE | re.MULTILINE
+)
 
 
 def is_demo(mix):
@@ -105,6 +119,37 @@ def known_embed_urls():
 
 
 # ---------------------------------------------------------------------------
+# Description / tracklist splitting
+# ---------------------------------------------------------------------------
+
+def split_description_and_tracklist(full_text):
+    """Splits on a 'Tracklist' heading (any casing, optional #/##/### and
+    trailing colon). Everything before is the DJ's own description;
+    everything after is kept verbatim as the tracklist section -- a
+    numbered list stays a list, a sentence of names stays a sentence."""
+    if not full_text:
+        return "", ""
+    match = TRACKLIST_HEADING_RE.search(full_text)
+    if not match:
+        return full_text.strip(), ""
+    description = full_text[: match.start()].strip()
+    tracklist = full_text[match.end():].strip()
+    return description, tracklist
+
+
+def resolve_description_and_tracklist(mix):
+    """Returns (description, tracklist). Prefers an explicitly-fetched
+    mix['tracklist'] (Mixcloud, scraped from its own tracklist widget --
+    see fetch_mixcloud_extras). Otherwise falls back to splitting
+    mix['description'] on a Tracklist heading, which is how SoundCloud
+    DJs typically write it, combined into one description blob."""
+    explicit_tracklist = mix.get("tracklist", "")
+    if explicit_tracklist:
+        return mix["description"].strip(), explicit_tracklist
+    return split_description_and_tracklist(mix["description"])
+
+
+# ---------------------------------------------------------------------------
 # Mixcloud
 # ---------------------------------------------------------------------------
 
@@ -124,12 +169,59 @@ def fetch_mixcloud_mixes(profile_url):
                 "slug": item.get("slug", ""),
                 "tags": [t["name"] for t in item.get("tags", [])],
                 "created": item.get("created_time", "")[:10],
+                # Mixcloud's list API doesn't return the show description --
+                # left blank here and filled in later, per-mix, only for
+                # mixes that turn out to be genuinely new (see
+                # fetch_mixcloud_description below), to avoid an extra page
+                # fetch for every mix in an artist's whole history.
                 "description": "",
             })
         url = data.get("paging", {}).get("next")
         if url:
             time.sleep(0.3)
     return mixes
+
+
+def extract_mixcloud_tracklist(html_src):
+    """Extracts the human-readable tracklist summary Mixcloud renders in
+    its own 'AudioTracklist' widget (e.g. "Playing tracks by A, B, C and
+    more."). This lives in the page's server-rendered HTML, in a
+    data-sentry-component="FeaturingArtists" block, entirely separate
+    from the DJ's own description -- Mixcloud's UI keeps the two apart,
+    unlike SoundCloud where DJs often type a combined blob."""
+    m = re.search(
+        r'data-sentry-component="FeaturingArtists"[^>]*>(.*?)</div>',
+        html_src, re.DOTALL,
+    )
+    if not m:
+        return ""
+    inner = m.group(1)
+    inner = re.sub(r"<!--.*?-->", "", inner)  # React hydration comments
+    inner = re.sub(r"<[^>]+>", "", inner)       # strip remaining tags (spans)
+    inner = html.unescape(inner)
+    return re.sub(r"\s+", " ", inner).strip()
+
+
+def fetch_mixcloud_extras(show_url):
+    """Returns (description, tracklist) for a Mixcloud show, fetched in
+    one page request. description is the DJ's own blurb (from
+    og:description, which is NOT truncated on Mixcloud -- it simply
+    doesn't include the tracklist, which lives elsewhere on the page).
+    tracklist is whatever Mixcloud's own tracklist widget shows, or an
+    empty string if the DJ never filled one in."""
+    try:
+        html_src = http_get(show_url).decode("utf-8", errors="ignore")
+    except (urllib.error.URLError, TimeoutError) as exc:
+        print(f"    ! couldn't fetch page: {exc}", file=sys.stderr)
+        return "", ""
+
+    description = ""
+    og_match = re.search(r'<meta property="og:description" content="([^"]*)"', html_src)
+    if og_match:
+        description = html.unescape(og_match.group(1)).strip()
+
+    tracklist = extract_mixcloud_tracklist(html_src)
+    return description, tracklist
 
 
 # ---------------------------------------------------------------------------
@@ -303,18 +395,23 @@ def yaml_list(values):
 
 
 def build_stub(mix, artist_field, genres, title=""):
-    front = (
-        "---\n"
-        "embed:\n"
-        f'  url: "{mix["url"]}"\n'
-        f'date: {mix["created"] or ""}\n'
-        f'artists: {yaml_list([artist_field])}\n'
-        f'genres: {yaml_list(genres)}\n'
-        f'title: "{title}"\n'
-        "---\n"
-    )
-    body = f"{mix['description']}\n\n" if mix["description"] else "\n"
-    body += "## Tracklist\n1. \n2. \n3. \n"
+    description, tracklist = resolve_description_and_tracklist(mix)
+
+    front = "---\n"
+    front += "embed:\n"
+    front += f'  url: "{mix["url"]}"\n'
+    front += f'date: {mix["created"] or ""}\n'
+    front += f'artists: {yaml_list([artist_field])}\n'
+    front += f'genres: {yaml_list(genres)}\n'
+    front += f'title: "{title}"\n'
+    front += "---\n\n"
+
+    body = f"{description}\n\n" if description else "\n"
+    if tracklist:
+        body += "## Tracklist\n\n" + tracklist + "\n"
+    else:
+        body += "## Tracklist\n1. \n2. \n3. \n"
+
     return front + body
 
 
@@ -368,6 +465,13 @@ def main():
         print(f"  {len(mixes)} mixes found, {len(new_mixes)} new")
 
         for mix in new_mixes:
+            # Mixcloud never gives us description/tracklist up front --
+            # fetch both together now, but only for mixes we're actually
+            # about to write a file for.
+            if platform == "Mixcloud" and not mix["description"] and "tracklist" not in mix:
+                mix["description"], mix["tracklist"] = fetch_mixcloud_extras(mix["url"])
+                time.sleep(0.3)
+
             artist_field = resolve_artist_field(name, mix, artist_slugs)
             genres = map_genres(mix["tags"], genre_lookup)
 
