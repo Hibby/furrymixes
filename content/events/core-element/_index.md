@@ -1,14 +1,13 @@
 ---
 title: "Core Element"
 cascade:
-  draft: true
   params:
-    eventSeries: "NFC"
+    eventSeries: "Core Element"
 website: "https://coreelement.co.uk"
-coverStyle: "photo"
+coverStyle: "logo"
 imageCredit:
-    text: "YorkshireFuddrs"
-    url: "https://yorkshirefurs.org.uk/"
+    text: "Core Element"
+    url: "https://www.coreelement.co.uk/"
 ---
 
 Core Element is an immersive fantasy, music and costuming festival, hosted
