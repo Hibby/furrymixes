@@ -2,7 +2,7 @@
 
 | Artist | Platform | Profile | Social |
 |---|---|---|---|
-| Acey | Mixcloud | https://www.mixcloud.com/AceyWoofer/ | https://bsky.app/profile/acey.dog |
+| DJ Acey Woofer | Mixcloud | https://www.mixcloud.com/AceyWoofer/ | https://bsky.app/profile/acey.dog |
 | Ada | Mixcloud | | https://bsky.app/profile/dumbdogada.bsky.social |
 | Astril | Mixcloud | https://www.mixcloud.com/4STRIL/ | |
 | Awkore | Mixcloud | https://www.mixcloud.com/AwkoreWolf/ | |
@@ -10,7 +10,7 @@
 | BitFox | Mixcloud | https://www.mixcloud.com/bit-fox/ | https://bsky.app/profile/bitfox13.bsky.social |
 | Daratomic | Mixcloud | https://www.mixcloud.com/Daratomic/ | https://bsky.app/profile/daratomic.bsky.social |
 | DJ Blaidd | Soundcloud | https://soundcloud.com/djblaidd | |
-| DJ Quest | Mixcloud | https://www.mixcloud.com/DjQuest666/ | |
+| DJ Quest aka Squish | Mixcloud | https://www.mixcloud.com/DjQuest666/ | |
 | Floppiest Dog | Mixcloud | https://www.mixcloud.com/Flopdotdog/ | https://bsky.app/profile/flop.dog |
 | Gale | Mixcloud | https://www.mixcloud.com/GaleTheAlpaca | https://bsky.app/profile/galethealpaca.bsky.social |
 | Hommy | Mixcloud | https://www.mixcloud.com/HommerSnopsis/ | https://bsky.app/profile/hommersnopsis.bsky.social |
@@ -20,6 +20,7 @@
 | Kiffy | Mixcloud | https://www.mixcloud.com/kiffylee/ | https://bsky.app/profile/kiffy.cat |
 | Kittz | Mixcloud | https://www.mixcloud.com/kittz/ | https://bsky.app/profile/kittz.cool |
 | Koya | Mixcloud | https://www.mixcloud.com/koyapaws/ | https://bsky.app/profile/stickypa.ws |
+| Liamm | Mixcloud | https://www.mixcloud.com/dj-byksr/ | https://bsky.app/profile/liammthecat.bsky.social |
 | Mallard | Mixcloud | https://www.mixcloud.com/gryphonalpha/ | |
 | MeowMix (Kittz + Px duo) | Mixcloud | https://www.mixcloud.com/pixel_p1x3l/ | |
 | Px | Mixcloud | https://www.mixcloud.com/pixel_p1x3l/ | https://bsky.app/profile/pixelpixel.cat |
@@ -34,7 +35,7 @@
 | Spirou | Mixcloud | https://www.mixcloud.com/Spirou333/ | https://bsky.app/profile/spirou.today |
 | Swolf | Mixcloud | https://www.mixcloud.com/djswolfuk/ | https://bsky.app/profile/djswolfuk.bsky.social |
 | Sylvix | Mixcloud | https://www.mixcloud.com/sylvix/ | https://bsky.app/profile/sylvixferret.bsky.social |
-| Teo | Mixcloud | https://www.mixcloud.com/TeoTheHyena/ | |
+| TeoTheHyena | Mixcloud | https://www.mixcloud.com/TeoTheHyena/ | |
 | Tazzle | Mixcloud | https://www.mixcloud.com/DamnTazzle/ | https://bsky.app/profile/tazzle.art |
 | Threadfiend | SoundCloud | https://soundcloud.com/threadfiend | |
 | Toby Dingo | Mixcloud | https://www.mixcloud.com/TobyDingo/ | https://bsky.app/profile/tobydingo.bsky.social |
