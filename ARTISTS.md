@@ -4,6 +4,7 @@
 |---|---|---|---|
 | DJ Acey Woofer | Mixcloud | https://www.mixcloud.com/AceyWoofer/ | https://bsky.app/profile/acey.dog |
 | Ada | Mixcloud | | https://bsky.app/profile/dumbdogada.bsky.social |
+| Addix | Mixcloud | https://mixcloud.com/DJVally | https://bsky.app/profile/ |
 | Astril | Mixcloud | https://www.mixcloud.com/4STRIL/ | |
 | Awkore | Mixcloud | https://www.mixcloud.com/AwkoreWolf/ | |
 | Badwolf Brock | Mixcloud | https://www.mixcloud.com/BadwolfBrock/ | https://bsky.app/profile/badwolfbrock.com |

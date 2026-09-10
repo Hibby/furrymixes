@@ -1,7 +1,7 @@
 ---
 embed:
   url: "https://www.mixcloud.com/AceyWoofer/nordicfuzzcon-2026-dead-dog-dance/"
-date: 2026-02-2
+date: 2026-02-22T23:00:00+0100
 artists: ["acey"]
 genres: ["tech house", "electro pop", "dj edits / bootlegs", "remixes", "multi-genre"]
 title: ""
