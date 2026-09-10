@@ -1,12 +1,12 @@
 ---
-title: "Scotiacon"
+title: "Furcation"
 cascade:
   params:
-    eventSeries: "Scotiacon"
+    eventSeries: "Furcatoin"
 website: "https://furcation.org.uk/"
 coverStyle: "photo"
 imageCredit:
-    text: "Scotiacon"
+    text: "Furcation"
     url: "https://furcation.org.uk/"
 ---
 
