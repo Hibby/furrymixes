@@ -50,10 +50,75 @@ def is_demo(mix):
     return bool(DEMO_RE.search(f"{mix['name']} {mix['slug']}"))
 
 
+VERBOSE = False
+
+
+def vlog(msg):
+    if VERBOSE:
+        print(f"      [v] {msg}")
+
+
 def http_get(url, headers=None):
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, **(headers or {})})
+    if VERBOSE:
+        vlog(f"GET {url}")
+        for k, v in req.header_items():
+            vlog(f"  > {k}: {v}")
+        vlog("  > (urllib also adds Host and Connection: close at send time)")
     with urllib.request.urlopen(req, timeout=15) as resp:
+        if VERBOSE:
+            vlog(f"  < HTTP {resp.status}")
+            for k, v in resp.headers.items():
+                vlog(f"  < {k}: {v}")
         return resp.read()
+
+
+# Mixcloud's HTML pages sit behind Cloudflare, which starts returning 403s
+# if they're requested in a fast burst (the JSON API is separate and more
+# tolerant). These keep page scraping polite enough not to trip that.
+PAGE_FETCH_DELAY = 2.0      # seconds between successive page fetches
+PAGE_FETCH_RETRIES = 3      # attempts per page before giving up on it
+PAGE_BACKOFF_BASE = 15      # seconds; doubles each retry (15, 30, ...)
+MAX_CONSECUTIVE_FAILURES = 3  # stop scraping pages for this run after this many
+
+
+class PageFetchFailed(Exception):
+    pass
+
+
+def http_get_page_with_backoff(url):
+    """Fetches an HTML page, backing off and retrying on 403/429 rather
+    than failing immediately. Honours a Retry-After header if sent.
+    Raises PageFetchFailed if every attempt fails."""
+    last_exc = None
+    for attempt in range(1, PAGE_FETCH_RETRIES + 1):
+        try:
+            return http_get(url).decode("utf-8", errors="ignore")
+        except urllib.error.HTTPError as exc:
+            last_exc = exc
+            if VERBOSE:
+                vlog(f"  < HTTP {exc.code} {exc.reason}")
+                if exc.headers:
+                    for k, v in exc.headers.items():
+                        vlog(f"  < {k}: {v}")
+                try:
+                    body = exc.read().decode("utf-8", errors="ignore")
+                except Exception:
+                    body = ""
+                title = re.search(r"<title>(.*?)</title>", body, re.IGNORECASE | re.DOTALL)
+                vlog(f"  < page title: {title.group(1).strip() if title else '(none)'}")
+                vlog(f"  < body starts: {body[:300]!r}")
+            if exc.code not in (403, 429) or attempt == PAGE_FETCH_RETRIES:
+                break
+            retry_after = exc.headers.get("Retry-After") if exc.headers else None
+            wait = int(retry_after) if retry_after and retry_after.isdigit() \
+                else PAGE_BACKOFF_BASE * (2 ** (attempt - 1))
+            print(f"    ~ HTTP {exc.code}, backing off {wait}s (attempt {attempt}/{PAGE_FETCH_RETRIES})")
+            time.sleep(wait)
+        except (urllib.error.URLError, TimeoutError) as exc:
+            last_exc = exc
+            break
+    raise PageFetchFailed(str(last_exc))
 
 
 def http_get_json(url, headers=None):
@@ -182,45 +247,45 @@ def fetch_mixcloud_mixes(profile_url):
     return mixes
 
 
-def extract_mixcloud_tracklist(html_src):
-    """Extracts the human-readable tracklist summary Mixcloud renders in
-    its own 'AudioTracklist' widget (e.g. "Playing tracks by A, B, C and
-    more."). This lives in the page's server-rendered HTML, in a
-    data-sentry-component="FeaturingArtists" block, entirely separate
-    from the DJ's own description -- Mixcloud's UI keeps the two apart,
-    unlike SoundCloud where DJs often type a combined blob."""
-    m = re.search(
-        r'data-sentry-component="FeaturingArtists"[^>]*>(.*?)</div>',
-        html_src, re.DOTALL,
-    )
-    if not m:
+def build_featuring_line(sections, shown=5):
+    """Builds the same "Playing tracks by A, B, C and more." summary line
+    Mixcloud shows on its own pages, from the API's per-track sections."""
+    artists = []
+    for section in sections or []:
+        track = section.get("track") or {}
+        name = (track.get("artist") or {}).get("name")
+        if name and name not in artists:
+            artists.append(name)
+    if not artists:
         return ""
-    inner = m.group(1)
-    inner = re.sub(r"<!--.*?-->", "", inner)  # React hydration comments
-    inner = re.sub(r"<[^>]+>", "", inner)       # strip remaining tags (spans)
-    inner = html.unescape(inner)
-    return re.sub(r"\s+", " ", inner).strip()
+    line = "Playing tracks by " + ", ".join(artists[:shown])
+    return line + (" and more." if len(artists) > shown else ".")
 
 
 def fetch_mixcloud_extras(show_url):
-    """Returns (description, tracklist) for a Mixcloud show, fetched in
-    one page request. description is the DJ's own blurb (from
-    og:description, which is NOT truncated on Mixcloud -- it simply
-    doesn't include the tracklist, which lives elsewhere on the page).
-    tracklist is whatever Mixcloud's own tracklist widget shows, or an
-    empty string if the DJ never filled one in."""
+    """Returns (description, tracklist) for a Mixcloud show via Mixcloud's
+    own public API (api.mixcloud.com/<user>/<slug>/), not the HTML page.
+
+    The HTML pages sit behind a Cloudflare managed challenge ("Just a
+    moment..." / cf-mitigated: challenge) that scripts can't pass, but the
+    API isn't behind it -- it's the route Mixcloud intends scripts to use.
+    The list endpoint used by fetch_mixcloud_mixes() omits descriptions,
+    which is why this makes one extra per-show call, only for new mixes.
+
+    Returns None if the call fails, so the caller skips writing a stub
+    and retries next run."""
+    path = re.sub(r"^https?://(www\.)?mixcloud\.com", "", show_url)
+    api_url = f"https://api.mixcloud.com{path}"
     try:
-        html_src = http_get(show_url).decode("utf-8", errors="ignore")
-    except (urllib.error.URLError, TimeoutError) as exc:
-        print(f"    ! couldn't fetch page: {exc}", file=sys.stderr)
-        return "", ""
+        data = json.loads(http_get_page_with_backoff(api_url))
+    except (PageFetchFailed, json.JSONDecodeError) as exc:
+        print(f"    ! couldn't fetch show details from API: {exc}", file=sys.stderr)
+        return None
 
-    description = ""
-    og_match = re.search(r'<meta property="og:description" content="([^"]*)"', html_src)
-    if og_match:
-        description = html.unescape(og_match.group(1)).strip()
-
-    tracklist = extract_mixcloud_tracklist(html_src)
+    description = html.unescape(data.get("description") or "").strip()
+    tracklist = build_featuring_line(data.get("sections"))
+    vlog(f"  API: description {len(description)} chars, "
+         f"{len(data.get('sections') or [])} track section(s)")
     return description, tracklist
 
 
@@ -431,10 +496,17 @@ def target_path(subdir_parts, artist_slug_or_name):
 # ---------------------------------------------------------------------------
 
 def main():
+    global VERBOSE
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dry-run", action="store_true", help="Print planned files without writing them")
     parser.add_argument("--artist", help="Only process this artist name (as written in ARTISTS.md)")
+    parser.add_argument(
+        "-v", "--verbose", action="store_true",
+        help="Print request/response headers for every HTTP call, plus the "
+             "title and start of the body for any error response",
+    )
     args = parser.parse_args()
+    VERBOSE = args.verbose
 
     artists = parse_artists_md()
     if args.artist:
@@ -449,6 +521,9 @@ def main():
     genre_lookup = known_genres()
 
     created = 0
+    consecutive_failures = 0
+    pages_blocked = False
+    skipped_for_retry = 0
     for artist in artists:
         name, platform, profile_url = artist["name"], artist["platform"], artist["profile_url"]
         print(f"[{platform}] {name}: {profile_url}")
@@ -469,8 +544,27 @@ def main():
             # fetch both together now, but only for mixes we're actually
             # about to write a file for.
             if platform == "Mixcloud" and not mix["description"] and "tracklist" not in mix:
-                mix["description"], mix["tracklist"] = fetch_mixcloud_extras(mix["url"])
-                time.sleep(0.3)
+                if pages_blocked:
+                    skipped_for_retry += 1
+                    continue
+                extras = fetch_mixcloud_extras(mix["url"])
+                time.sleep(PAGE_FETCH_DELAY)
+                if extras is None:
+                    # Don't write a stub with a missing description: it
+                    # would count as "known" and never be retried.
+                    consecutive_failures += 1
+                    skipped_for_retry += 1
+                    print(f"  ~ skipped for now, will retry next run: {mix['url']}")
+                    if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
+                        pages_blocked = True
+                        print(
+                            f"  ! {consecutive_failures} page fetches failed in a row -- "
+                            "pausing Mixcloud page scraping for the rest of this run",
+                            file=sys.stderr,
+                        )
+                    continue
+                consecutive_failures = 0
+                mix["description"], mix["tracklist"] = extras
 
             artist_field = resolve_artist_field(name, mix, artist_slugs)
             genres = map_genres(mix["tags"], genre_lookup)
@@ -499,6 +593,11 @@ def main():
 
     if not args.dry_run:
         print(f"\nWrote {created} new stub file(s) under content/uncategorised/")
+    if skipped_for_retry:
+        print(
+            f"Skipped {skipped_for_retry} Mixcloud mix(es) whose pages couldn't be "
+            "fetched -- they'll be picked up automatically on the next run."
+        )
     return 0
 
 

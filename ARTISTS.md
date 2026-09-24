@@ -12,6 +12,7 @@
 | Daratomic | Mixcloud | https://www.mixcloud.com/Daratomic/ | https://bsky.app/profile/daratomic.bsky.social |
 | DJ Blaidd | Soundcloud | https://soundcloud.com/djblaidd | |
 | DJ Quest aka Squish | Mixcloud | https://www.mixcloud.com/DjQuest666/ | |
+| Drako | Mixcloud | https://www.mixcloud.com/drakodoge/ | https://bsky.app/profile/drakodoge.bsky.social |
 | Floppiest Dog | Mixcloud | https://www.mixcloud.com/Flopdotdog/ | https://bsky.app/profile/flop.dog |
 | Gale | Mixcloud | https://www.mixcloud.com/GaleTheAlpaca | https://bsky.app/profile/galethealpaca.bsky.social |
 | Hommy | Mixcloud | https://www.mixcloud.com/HommerSnopsis/ | https://bsky.app/profile/hommersnopsis.bsky.social |
@@ -37,6 +38,7 @@
 | Sly | Mixcloud | https://www.mixcloud.com/thatslymf/ | https://bsky.app/profile/darrenxfire.bsky.social |
 | Sora | Mixcloud | https://www.mixcloud.com/sorathebun/ | https://bsky.app/profile/sorathebun.com |
 | Spirou | Mixcloud | https://www.mixcloud.com/Spirou333/ | https://bsky.app/profile/spirou.today |
+| Strawberry Protato | Mixcloud | https://www.mixcloud.com/StrawberryProtato/ | https://bsky.app/profile/strawbs.tv/ |
 | Swolf | Mixcloud | https://www.mixcloud.com/djswolfuk/ | https://bsky.app/profile/djswolfuk.bsky.social |
 | Sylvix | Mixcloud | https://www.mixcloud.com/sylvix/ | https://bsky.app/profile/sylvixferret.bsky.social |
 | TeoTheHyena | Mixcloud | https://www.mixcloud.com/TeoTheHyena/ | |
