@@ -1,7 +1,7 @@
 ---
 embed:
   url: "https://www.mixcloud.com/AceyWoofer/pawsome-2026-dead-dog-campy-club-assortment/"
-date: 2026-10-07
+date: 2026-10-02
 artists: ["DJ Acey Woofer"]
 genres: ["electro pop", "hi-nrg", "dj edits / bootlegs", "pride", "mash ups"]
 title: ""

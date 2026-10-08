@@ -1,7 +1,7 @@
 ---
 embed:
   url: "https://www.mixcloud.com/BadwolfBrock/badwolf-live-berkshirefurs-last-howl-of-summer-2026/"
-date: 2026-09-28
+date: 2026-09-27T15:00:00+0100
 artists: ["badwolf-brock"]
 genres: ["Disco", "nu-disco", "disco house"]
 title: ""

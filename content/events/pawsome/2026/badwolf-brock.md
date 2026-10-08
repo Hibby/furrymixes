@@ -1,7 +1,7 @@
 ---
 embed:
   url: "https://www.mixcloud.com/BadwolfBrock/badwolf-live-pawsome-2026/"
-date: 2026-10-05
+date: 2026-10-02
 artists: ["badwolf-brock"]
 genres: ["techno", "deep techno", "dark techno", "melodic techno"]
 title: ""

@@ -1,7 +1,7 @@
 ---
 embed:
   url: "https://www.mixcloud.com/snowy1256/kitkatz-you-me-berkshirefurs-last-howl-of-summer-2026/"
-date: 2026-09-28
+date: 2026-09-27T17:00:00+0100
 artists: ["kallax"]
 genres: ["speed garage", "garage (ukg)", "house", "multi-genre"]
 title: ""

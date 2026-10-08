@@ -1,7 +1,7 @@
 ---
 embed:
   url: "https://www.mixcloud.com/snowy1256/pawsome-2026-kitty-green-eyes-the-darkmoon-dance/"
-date: 2026-10-05
+date: 2026-10-02
 artists: ["kallax"]
 genres: ["house", "garage (ukg)", "techno"]
 title: ""
