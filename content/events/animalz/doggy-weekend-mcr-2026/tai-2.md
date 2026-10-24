@@ -1,7 +1,7 @@
 ---
 embed:
   url: "https://www.mixcloud.com/TAIHUSKY/tai-doggy-weekend-saturday-set/"
-date: 2026-10-27
+date: 2026-10-17
 artists: ["Tai"]
 genres: ["hardstyle", "hyperpop", "bass & club music"]
 title: ""
