@@ -1,3 +1,4 @@
 public/
 *.lock
 content/uncategorised/
+.DS_Store
