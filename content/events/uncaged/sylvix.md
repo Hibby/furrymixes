@@ -1,7 +1,7 @@
 ---
 embed:
   url: "https://www.mixcloud.com/sylvix/sylvix-uncaged-sept-2026/"
-date: 2026-09-15
+date: 2026-09-12
 artists: ["Sylvix"]
 genres: ["future bounce", "breaks", "bassline / niche", "house"]
 title: ""
