@@ -10,6 +10,7 @@
 | Badwolf Brock | Mixcloud | https://www.mixcloud.com/BadwolfBrock/ | https://bsky.app/profile/badwolfbrock.com |
 | BitFox | Mixcloud | https://www.mixcloud.com/bit-fox/ | https://bsky.app/profile/bitfox13.bsky.social |
 | Daratomic | Mixcloud | https://www.mixcloud.com/Daratomic/ | https://bsky.app/profile/daratomic.bsky.social |
+| DJ Buday | Soundcloud | https://soundcloud.com/dj_buday | https://bsky.app/profile/pupbuday.bsky.social |
 | DJ Blaidd | Soundcloud | https://soundcloud.com/djblaidd | |
 | DJ Quest aka Squish | Mixcloud | https://www.mixcloud.com/DjQuest666/ | |
 | Drako | Mixcloud | https://www.mixcloud.com/drakodoge/ | https://bsky.app/profile/drakodoge.bsky.social |
@@ -22,6 +23,7 @@
 | Kiffy | Mixcloud | https://www.mixcloud.com/kiffylee/ | https://bsky.app/profile/kiffy.cat |
 | Kittz | Mixcloud | https://www.mixcloud.com/kittz/ | https://bsky.app/profile/kittz.cool |
 | Koya | Mixcloud | https://www.mixcloud.com/koyapaws/ | https://bsky.app/profile/stickypa.ws |
+| Kyuro | Soundcloud | https://soundcloud.com/pupkyuro | |
 | Liamm | Mixcloud | https://www.mixcloud.com/dj-byksr/ | https://bsky.app/profile/liammthecat.bsky.social |
 | Mallard | Mixcloud | https://www.mixcloud.com/gryphonalpha/ | |
 | MeowMix (Kittz + Px duo) | Mixcloud | https://www.mixcloud.com/pixel_p1x3l/ | |
@@ -41,6 +43,7 @@
 | Strawberry Protato | Mixcloud | https://www.mixcloud.com/StrawberryProtato/ | https://bsky.app/profile/strawbs.tv/ |
 | Swolf | Mixcloud | https://www.mixcloud.com/djswolfuk/ | https://bsky.app/profile/djswolfuk.bsky.social |
 | Sylvix | Mixcloud | https://www.mixcloud.com/sylvix/ | https://bsky.app/profile/sylvixferret.bsky.social |
+| Tai | Mixcloud | https://www.mixcloud.com/TAIHUSKY/ | https://bsky.app/profile/taihusky.bsky.social |
 | TeoTheHyena | Mixcloud | https://www.mixcloud.com/TeoTheHyena/ | |
 | Tazzle | Mixcloud | https://www.mixcloud.com/DamnTazzle/ | https://bsky.app/profile/tazzle.art |
 | Threadfiend | SoundCloud | https://soundcloud.com/threadfiend | |
