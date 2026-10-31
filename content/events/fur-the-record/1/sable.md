@@ -14,7 +14,7 @@ artists: ["Sable xox"]
 # Required. Match existing pinned genre pages where possible (check
 # content/genres/ for what's already there) so terms merge rather than
 # splinter into near-duplicates (e.g. "Mash Up" vs "mash ups").
-genres: ["breakbeat","house"]
+genres: ["House", "Breaks & Electronic"]
 
 # Required for the player to render. platform is either "mixcloud" or "soundcloud".
 # url is the full page URL either way, e.g.
@@ -24,6 +24,7 @@ genres: ["breakbeat","house"]
 embed:
   url: "https://soundcloud.com/sablexox/sable-xox-fur-the-record-220624"
   height: 400 # for soundcloud only
+original_genres: ["breakbeat", "house"]
 ---
 
 <!-- One or two sentences on the set — venue, vibe, occasion. -->

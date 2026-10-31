@@ -3,8 +3,9 @@ embed:
   url: "https://www.mixcloud.com/DJVally/frozen-echoes/"
 date: 2025-02-22T20:30:00+0100
 artists: ["Addix"]
-genres: ["progressive trance", "progressive house"]
+genres: ["House", "Trance"]
 title: ""
+original_genres: ["progressive trance", "progressive house"]
 ---
 
 My live set from Nordic Fuzzcon 2025!

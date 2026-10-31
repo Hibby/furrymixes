@@ -6,8 +6,9 @@ date: 2026-08-08
 
 artists: ["sylvix"]
 
-genres: ["uk garage","future garage","bassline"]
+genres: ["UK Garage & Bass"]
 venue: "Mainstage"
+original_genres: ["uk garage", "future garage", "bassline"]
 ---
 
 A recording of my set at The Church for the MancFurs Summer Party, August 2026.

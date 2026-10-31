@@ -5,10 +5,11 @@ date: 2024-12-07
 
 artists: ["meowmix","px","kittz"]
 
-genres: ["big beat","uk garage","breaks","disco"]
+genres: ["UK Garage & Bass", "Disco & Funk", "Breaks & Electronic"]
 
 embed:
   url: "https://www.mixcloud.com/kittz/meowmix-lfm-winter-party-24/"
+original_genres: ["big beat", "uk garage", "breaks", "disco"]
 ---
 
 <!-- One or two sentences on the set — venue, vibe, occasion. -->

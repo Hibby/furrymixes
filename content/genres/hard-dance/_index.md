@@ -1,7 +1,12 @@
 ---
-title: "Donk"
-description: "Thumpy loud music"
+title: "Hard Dance"
+url: "/genres/hard-dance/"
+description: "Hardstyle, hardcore, hard trance and other hard dance styles."
 ---
+
+Hardstyle, hardcore, hard trance and other hard dance styles.
+
+## Donk
 
 Donk, often also called Scouse House or Bounce House is one of the greatest modern genres. A distillation of all the best forms of hard house into one fast, loud and thumpy style with a bassline that can only be described as "a metal pipe being smashed with a sandal". 
 

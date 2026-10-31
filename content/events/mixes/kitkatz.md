@@ -3,8 +3,9 @@ embed:
   url: "https://www.mixcloud.com/snowy1256/kitkatz-sussex-furs-summer-party-b2b-w-liamm/"
 date: 2026-07-16
 artists: ["Kallax", "KitKatz", "Liamm"]
-genres: ["uk garage", "bassline", "speed garage"]
+genres: ["UK Garage & Bass"]
 title: "KitKatz - Sussex Furs 2026 Summer Party - B2B w/ Liamm"
+original_genres: ["uk garage", "bassline", "speed garage"]
 ---
 
 Presenting the debut B2B of Liamm and myself (KitKatz) with an extended version of our Sussex Furs 2026 Summer Party B2B set. Where we brought the bassiest whurrs and beats to the lovely people of Sussex Furs. This is a bit of a mixture of UKG, Bassline and Speed Garage

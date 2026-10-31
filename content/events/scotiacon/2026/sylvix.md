@@ -3,8 +3,9 @@ embed:
   url: "https://www.mixcloud.com/sylvix/sylvix-scotiacon-2026-main-stage/"
 date: 2026-02-08
 artists: ["Sylvix"]
-genres: ["house", "future house", "bass house", "garage (ukg)", "future garage"]
+genres: ["House", "UK Garage & Bass"]
 title: ""
+original_genres: ["house", "future house", "bass house", "garage (ukg)", "future garage"]
 ---
 
 Recording of my set from Scotiacon 2026's main stage on Sunday night! Includes the end of the recording (IYKYK ;3)

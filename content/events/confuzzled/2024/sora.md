@@ -6,7 +6,8 @@ date: 2024-05-26
 
 artists: ["sora"]
 
-genres: ["drum & bass"]
+genres: ["Drum & Bass"]
 venue: "Animalz"
+original_genres: ["drum & bass"]
 ---
 Playing tracks by Future, Swedish House Mafia, Fred again.., Fred V & Grafix, Mat Zo, Fox Stevenson, TC, Swindle and more.

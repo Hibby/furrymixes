@@ -3,9 +3,10 @@ embed:
   url: "https://www.mixcloud.com/sylvix/sylvix-core-element-26/"
 date: 2026-08-16T22:00:00+0100
 artists: ["Sylvix"]
-genres: ["future bass", "bass house", "future garage", "colour bass"]
+genres: ["House", "UK Garage & Bass", "Dubstep & Bass"]
 title: ""
 venue: "Alter"
+original_genres: ["future bass", "bass house", "future garage", "colour bass"]
 ---
 
 Live recording of my set from the Alter main stage at Core Element Festival 2026 in Elvaston. Thanks to the incredible AV team for such a smooth setup!

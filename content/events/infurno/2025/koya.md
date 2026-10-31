@@ -18,12 +18,13 @@ artists: ["Koya"]
 # Required. Match existing pinned genre pages where possible (check
 # content/genres/ for what's already there) so terms merge rather than
 # splinter into near-duplicates (e.g. "Mash Up" vs "mash ups").
-genres: ["breakbeat"]
+genres: ["Breaks & Electronic"]
 
 # Leave blank to auto-generate "Artist — Live at Event (Date)".
 # Only set this if the set needs a custom name (themed set, B2B, etc).
 title: ""
 
+original_genres: ["breakbeat"]
 ---
 
 <!-- One or two sentences on the set — venue, vibe, occasion. -->

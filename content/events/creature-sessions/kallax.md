@@ -3,8 +3,9 @@ embed:
   url: "https://www.mixcloud.com/snowy1256/creature-sessions-august-2026-funky-disco-house/"
 date: 2025-08-03
 artists: ["Kallax"]
-genres: ["funky house", "house", "disco house", "disco"]
+genres: ["House", "Disco & Funk"]
 title: "Creature Sessions August 2026 - Funky Disco House Mix"
+original_genres: ["funky house", "house", "disco house", "disco"]
 ---
 
 Was privileged to perform the opening set at the August edition of Creature Sessions @ Basement 45 in Bristol

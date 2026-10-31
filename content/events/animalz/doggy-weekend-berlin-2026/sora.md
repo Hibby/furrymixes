@@ -2,10 +2,11 @@
 date: 2026-03-28
 title: "Sora // Achromatise @ Animalz DW Berlin, Kantine am Berghain"
 artists: ["sora"]
-genres: ["drum & bass"]
+genres: ["Drum & Bass"]
 embed:
   url: "https://www.mixcloud.com/sorathebun/achromise-live-from-doggy-weekend-berlin-2026-kantine-am-berghain/"
 venue: "Kantine Am Berghain"
+original_genres: ["drum & bass"]
 ---
 
 "Achromatise – verb (transitive) – /əˈkrəʊmətaɪz/ – To make achromatic; to remove colour from"

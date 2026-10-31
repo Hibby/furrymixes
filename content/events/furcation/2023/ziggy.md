@@ -3,8 +3,9 @@ embed:
   url: "https://www.mixcloud.com/djinnbanter/furcation-2023/"
 date: 2023-11-19
 artists: ["ziggy"]
-genres: ["house", "edm", "trance", "dance"]
+genres: ["House", "Trance"]
 title: ""
+original_genres: ["house", "edm", "trance", "dance"]
 ---
 
 ## Tracklist

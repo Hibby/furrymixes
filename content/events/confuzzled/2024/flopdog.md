@@ -6,8 +6,9 @@ date: 2024-05-25
 
 artists: ["Floppiest Dog"]
 
-genres: ["neurofunk","drum & bass"]
+genres: ["Drum & Bass"]
 venue: "Mainstage"
+original_genres: ["neurofunk", "drum & bass"]
 ---
 
 <!-- One or two sentences on the set — venue, vibe, occasion. -->

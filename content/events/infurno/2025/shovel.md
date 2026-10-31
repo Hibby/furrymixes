@@ -14,7 +14,7 @@ artists: ["Shovel"]
 # Required. Match existing pinned genre pages where possible (check
 # content/genres/ for what's already there) so terms merge rather than
 # splinter into near-duplicates (e.g. "Mash Up" vs "mash ups").
-genres: ["Drum & Bass","Neurofunk","jungle"]
+genres: ["Drum & Bass"]
 
 # Required for the player to render. platform is either "mixcloud" or "soundcloud".
 # url is the full page URL either way, e.g.
@@ -24,6 +24,7 @@ genres: ["Drum & Bass","Neurofunk","jungle"]
 embed:
   url: "https://www.mixcloud.com/shovel-/infurno-25-minimaljungleneurofunk/"
   height: # for soundcloud only
+original_genres: ["Drum & Bass", "Neurofunk", "jungle"]
 ---
 
 <!-- One or two sentences on the set — venue, vibe, occasion. -->

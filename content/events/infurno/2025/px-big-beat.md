@@ -14,7 +14,7 @@ artists: ["Px"]
 # Required. Match existing pinned genre pages where possible (check
 # content/genres/ for what's already there) so terms merge rather than
 # splinter into near-duplicates (e.g. "Mash Up" vs "mash ups").
-genres: ["big beat", "breaks", "acid breaks"]
+genres: ["Breaks & Electronic"]
 
 # Required for the player to render. platform is either "mixcloud" or "soundcloud".
 # url is the full page URL either way, e.g.
@@ -24,4 +24,5 @@ genres: ["big beat", "breaks", "acid breaks"]
 embed:
   url: "https://www.mixcloud.com/pixel_p1x3l/infurno-25-big-beats-are-the-best/"
   height: # for soundcloud only
+original_genres: ["big beat", "breaks", "acid breaks"]
 ---

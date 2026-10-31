@@ -3,8 +3,9 @@ embed:
   url: "https://www.mixcloud.com/dj-byksr/jazz-house-demo/"
 date: 2026-06-16
 artists: ["Liamm"]
-genres: ["jazz", "jazz house", "house"]
+genres: ["House", "Alternative & Other"]
 title: "Jazz House (Demo)"
+original_genres: ["jazz", "jazz house", "house"]
 ---
 
 ## Tracklist

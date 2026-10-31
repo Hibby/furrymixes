@@ -14,7 +14,7 @@ artists: ["Badwolf Brock"]
 # Required. Match existing pinned genre pages where possible (check
 # content/genres/ for what's already there) so terms merge rather than
 # splinter into near-duplicates (e.g. "Mash Up" vs "mash ups").
-genres: ["disco","nu-disco","house","disco house"]
+genres: ["House", "Disco & Funk"]
 
 # Required for the player to render. platform is either "mixcloud" or "soundcloud".
 # url is the full page URL either way, e.g.
@@ -24,6 +24,7 @@ genres: ["disco","nu-disco","house","disco house"]
 embed:
   url: "https://www.mixcloud.com/BadwolfBrock/badwolf-live-infurno-2025-opening-set/"
   height: # for soundcloud only
+original_genres: ["disco", "nu-disco", "house", "disco house"]
 ---
 
 <!-- One or two sentences on the set — venue, vibe, occasion. -->

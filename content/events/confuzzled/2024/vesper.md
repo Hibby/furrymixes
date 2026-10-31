@@ -6,7 +6,8 @@ date: 2024-05-25
 
 artists: ["vesper"]
 
-genres: ["drum & bass","liquid drum & bass"]
+genres: ["Drum & Bass"]
 venue: "Mainstage"
+original_genres: ["drum & bass", "liquid drum & bass"]
 ---
 The full version of the set that I played at ConFuzzled 2024 (and also TFF a couple of months earlier!). The ConFuzzled version had to be trimmed down to <55m on the night, so this is the original 60m version I devised.

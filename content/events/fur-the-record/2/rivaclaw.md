@@ -14,7 +14,7 @@ artists: ["Rivaclaw"]
 # Required. Match existing pinned genre pages where possible (check
 # content/genres/ for what's already there) so terms merge rather than
 # splinter into near-duplicates (e.g. "Mash Up" vs "mash ups").
-genres: ["uk hardcore","happy hardcore"]
+genres: ["Hard Dance"]
 
 # Required for the player to render. platform is either "mixcloud" or "soundcloud".
 # url is the full page URL either way, e.g.
@@ -24,6 +24,7 @@ genres: ["uk hardcore","happy hardcore"]
 embed:
   url: "https://www.mixcloud.com/Rivaclaw/fur-the-record-2-actual-set/"
   height: # for soundcloud only
+original_genres: ["uk hardcore", "happy hardcore"]
 ---
 
 A recreation of my set from Fur The Record almost entirely as it happened. This is mostly the same as my previously uploaded "Intended set" but using the emergency tracks that I played at the venue due to a personal issue that I wasn't able to overcome in time.

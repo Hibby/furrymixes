@@ -1,0 +1,2 @@
+# Safe parsing for catalogue validation and provenance-preserving metadata updates.
+PyYAML>=6.0,<7

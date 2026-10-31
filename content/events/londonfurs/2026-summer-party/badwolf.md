@@ -14,7 +14,7 @@ artists: ["badwolf-brock"]
 # Required. Match existing pinned genre pages where possible (check
 # content/genres/ for what's already there) so terms merge rather than
 # splinter into near-duplicates (e.g. "Mash Up" vs "mash ups").
-genres: ["disco","disco house","house","rock"]
+genres: ["House", "Disco & Funk", "Alternative & Other"]
 
 # Required for the player to render. platform is either "mixcloud" or "soundcloud".
 # url is the full page URL either way, e.g.
@@ -24,6 +24,7 @@ genres: ["disco","disco house","house","rock"]
 embed:
   url: "https://www.mixcloud.com/BadwolfBrock/badwolf-live-londonfurs-summer-party-2026/"
   height: # for soundcloud only
+original_genres: ["disco", "disco house", "house", "rock"]
 ---
 
 <!-- One or two sentences on the set — venue, vibe, occasion. -->

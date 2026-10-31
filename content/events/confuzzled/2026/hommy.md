@@ -6,8 +6,9 @@ date: 2026-05-24T00:00:00+0100
 
 artists: ["Hommy"]
 
-genres: ["future garage","uk garage"]
+genres: ["UK Garage & Bass"]
 venue: "Mainstage"
+original_genres: ["future garage", "uk garage"]
 ---
 
 I was my absolute pleasure to perform a set at Confuzzled furry con this year!

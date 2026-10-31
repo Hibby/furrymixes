@@ -3,9 +3,10 @@ embed:
   url: "https://www.mixcloud.com/ReivanLion/reivan-club-animalz-aug-25/"
 date: 2025-08-09
 artists: ["Reivan"]
-genres: ["house", "bass house", "minimal tech house", "uk garage", "speed garage"]
+genres: ["House", "UK Garage & Bass"]
 title: ""
 venue: "cruz 101"
+original_genres: ["house", "bass house", "minimal tech house", "uk garage", "speed garage"]
 ---
 
 ## Tracklist

@@ -14,7 +14,7 @@ artists: ["Astril"]
 # Required. Match existing pinned genre pages where possible (check
 # content/genres/ for what's already there) so terms merge rather than
 # splinter into near-duplicates (e.g. "Mash Up" vs "mash ups").
-genres: ["bass","UK Garage","bassline","dubstep"]
+genres: ["UK Garage & Bass", "Dubstep & Bass"]
 
 # Required for the player to render. platform is either "mixcloud" or "soundcloud".
 # url is the full page URL either way, e.g.
@@ -24,5 +24,6 @@ genres: ["bass","UK Garage","bassline","dubstep"]
 embed:
   url: "https://www.mixcloud.com/4STRIL/inferno-25-bassukgdubstep/"
   height: # for soundcloud only
+original_genres: ["bass", "UK Garage", "bassline", "dubstep"]
 ---
 

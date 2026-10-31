@@ -1,0 +1,1 @@
+{{ partial "genre-feed.xml" . }}

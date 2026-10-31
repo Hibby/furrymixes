@@ -27,15 +27,17 @@ import re
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
+
+from taxonomy import Taxonomy
 
 ROOT = Path(__file__).resolve().parent.parent
 ARTISTS_MD = ROOT / "ARTISTS.md"
 CONTENT = ROOT / "content"
 EVENTS_DIR = CONTENT / "events"
 ARTISTS_DIR = CONTENT / "artists"
-GENRES_DIR = CONTENT / "genres"
 UNCATEGORISED_DIR = CONTENT / "uncategorised"
 
 USER_AGENT = "furrymixes-fetch-new-mixes/1.0 (+https://furrymix.es)"
@@ -319,7 +321,7 @@ def fetch_soundcloud_mixes(profile_url):
     client_id = get_soundcloud_client_id(profile_url)
     resolve_url = (
         "https://api-v2.soundcloud.com/resolve"
-        f"?url={urllib.request.quote(profile_url, safe='')}&client_id={client_id}"
+        f"?url={urllib.parse.quote(profile_url, safe='')}&client_id={client_id}"
     )
     user = http_get_json(resolve_url)
     user_id = user["id"]
@@ -419,39 +421,6 @@ def guess_event_edition(mix, vocab):
 
 
 # ---------------------------------------------------------------------------
-# Genre mapping
-# ---------------------------------------------------------------------------
-
-def known_genres():
-    genres = {}
-    if not GENRES_DIR.exists():
-        return genres
-    for genre_dir in GENRES_DIR.iterdir():
-        idx = genre_dir / "_index.md"
-        if not idx.exists():
-            continue
-        m = re.search(r'title:\s*"([^"]+)"', idx.read_text())
-        if m:
-            genres[m.group(1).lower()] = m.group(1)
-    return genres
-
-
-def map_genres(tags, genre_lookup):
-    mapped = []
-    seen = set()
-    for tag in tags:
-        tag = tag.strip()
-        if not tag:
-            continue
-        key = tag.lower()
-        value = genre_lookup.get(key, key)
-        if value.lower() not in seen:
-            seen.add(value.lower())
-            mapped.append(value)
-    return mapped
-
-
-# ---------------------------------------------------------------------------
 # Stub file writing
 # ---------------------------------------------------------------------------
 
@@ -459,7 +428,9 @@ def yaml_list(values):
     return "[" + ", ".join(json.dumps(v) for v in values) + "]"
 
 
-def build_stub(mix, artist_field, genres, title=""):
+def build_stub(mix, artist_field, classification, title=""):
+    genres = classification["genres"]
+    Taxonomy().check_categories(genres, allow_empty=True)
     description, tracklist = resolve_description_and_tracklist(mix)
 
     front = "---\n"
@@ -468,7 +439,10 @@ def build_stub(mix, artist_field, genres, title=""):
     front += f'date: {mix["created"] or ""}\n'
     front += f'artists: {yaml_list([artist_field])}\n'
     front += f'genres: {yaml_list(genres)}\n'
-    front += f'title: "{title}"\n'
+    front += f'original_genres: {yaml_list(mix["tags"])}\n'
+    if not genres:
+        front += 'genre_review_required: true\n'
+    front += f'title: {json.dumps(title)}\n'
     front += "---\n\n"
 
     body = f"{description}\n\n" if description else "\n"
@@ -518,7 +492,7 @@ def main():
     known = known_embed_urls()
     artist_slugs = known_artist_slugs()
     vocab = event_vocabulary()
-    genre_lookup = known_genres()
+    taxonomy = Taxonomy()
 
     created = 0
     consecutive_failures = 0
@@ -540,6 +514,10 @@ def main():
         print(f"  {len(mixes)} mixes found, {len(new_mixes)} new")
 
         for mix in new_mixes:
+            classification = taxonomy.classify(mix["tags"], mix["url"])
+            if classification["status"] != "eligible":
+                print(f"  ~ {classification['status']} by policy: {mix['url']}")
+                continue
             # Mixcloud never gives us description/tracklist up front --
             # fetch both together now, but only for mixes we're actually
             # about to write a file for.
@@ -567,7 +545,6 @@ def main():
                 mix["description"], mix["tracklist"] = extras
 
             artist_field = resolve_artist_field(name, mix, artist_slugs)
-            genres = map_genres(mix["tags"], genre_lookup)
 
             if is_demo(mix):
                 # Demo mixes aren't tied to an event; file them under
@@ -575,14 +552,17 @@ def main():
                 # the mix's own title and upload date rather than an event
                 # guess.
                 path = target_path(["mixes"], artist_field)
-                stub = build_stub(mix, artist_field, genres, title=mix["name"])
+                stub = build_stub(mix, artist_field, classification, title=mix["name"])
             else:
                 event, edition = guess_event_edition(mix, vocab)
                 subdir = [event, edition] if event else ["_unsorted"]
                 path = target_path(subdir, artist_field)
-                stub = build_stub(mix, artist_field, genres)
+                stub = build_stub(mix, artist_field, classification)
 
             print(f"  -> {path.relative_to(ROOT)}  ({mix['url']})")
+            print(f"     genres: {classification['genres']}; unresolved: {classification['unresolved']}")
+            if not classification["genres"]:
+                print("     ! genre review required; retained in staging")
             if args.dry_run:
                 continue
 

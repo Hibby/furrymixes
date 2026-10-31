@@ -14,11 +14,12 @@ artists: ["Vesper"]
 # Required. Match existing pinned genre pages where possible (check
 # content/genres/ for what's already there) so terms merge rather than
 # splinter into near-duplicates (e.g. "Mash Up" vs "mash ups").
-genres: ["Electro House"]
+genres: ["House"]
 
 # height is optional (defaults: mixcloud 400, soundcloud 166).
 embed:
   url: "https://www.mixcloud.com/noodlecollie/infurno-2025-00s-electro/"
   height: # for soundcloud only
+original_genres: ["Electro House"]
 ---
 

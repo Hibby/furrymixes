@@ -6,8 +6,9 @@ date: 2026-05-23T22:00:00+0100
 
 artists: ["Acey"]
 
-genres: ["tech house","electro pop","bootlegs"]
+genres: ["House", "Pop & Open Format"]
 venue: "Big Night"
+original_genres: ["tech house", "electro pop", "bootlegs"]
 ---
 Genrefluid mix for opening Confuzzled's relaxed dress code Big Night. Kicking off with a comfortable fursuit friendly tempo of 126BPM, and pushing into the 130s as we progress.
 

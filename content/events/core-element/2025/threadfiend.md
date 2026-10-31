@@ -3,9 +3,10 @@ embed:
   url: "https://soundcloud.com/threadfiend/core-element-2025"
 date: 2025-08-26T23:00:00+0100
 artists: ["Threadfiend"]
-genres: ["dance & edm", "drum & bass", "mixtape", "bass funk"]
+genres: ["Drum & Bass", "Disco & Funk"]
 title: ""
 venue: "Surface"
+original_genres: ["dance & edm", "drum & bass", "mixtape", "bass funk"]
 ---
 
 Had the privilege of playing Core Element last weekend on the Surface stage. Huge shout out to the festival organisers, the other DJs, and of course everyone enjoying the music! Whether in the crowd or giving it a listen online - you are the best. Can't wait to see you on the next one.

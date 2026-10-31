@@ -15,10 +15,10 @@ date: {{ .Date }}
 # Multiple artists for a B2B: artists: ["dj-name", "meowmix"]
 artists: []
 
-# Required. Match existing pinned genre pages where possible (check
-# content/genres/ for what's already there) so terms merge rather than
-# splinter into near-duplicates (e.g. "Mash Up" vs "mash ups").
+# Only approved canonical categories belong in genres; preserve artist tags separately.
+# Run python3 scripts/catalogue.py migrate to classify original_genres using the policy.
 genres: []
+original_genres: []
 
 # Leave blank to auto-generate "Artist — Live at Event (Date)".
 # Only set this if the set needs a custom name (themed set, B2B, etc).

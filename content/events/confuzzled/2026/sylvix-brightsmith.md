@@ -3,9 +3,10 @@ embed:
   url: "https://www.mixcloud.com/sylvix/sylvix-brightsmith-beats-cfz-2026/"
 date: 2026-05-24
 artists: ["Sylvix"]
-genres: ["future garage", "tech house", "future house", "deep house"]
+genres: ["House", "UK Garage & Bass"]
 title: ""
 venue: "Brightsmith"
+original_genres: ["future garage", "tech house", "future house", "deep house"]
 ---
 New stuff begins at 7 mins <3
 My set from the Brightsmith bar at Confuzzled 2026.

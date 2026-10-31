@@ -112,6 +112,12 @@ jobs:
           key: hugo-${{ github.run_id }}
           restore-keys: hugo-
 
+      - name: Validate catalogue and test taxonomy
+        run: |
+          python3 -m pip install -r scripts/requirements.txt
+          python3 scripts/catalogue.py check
+          python3 -m unittest discover -s scripts -p 'test_*.py'
+
       - name: Build
         run: |
           echo "Building the project..."

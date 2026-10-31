@@ -6,7 +6,8 @@ date: 2026-06-13T18:00:00+01:00
 
 artists: ["Kiffy"]
 
-genres: ["drum & bass","Rock","metal"]
+genres: ["Drum & Bass", "Alternative & Other"]
+original_genres: ["drum & bass", "Rock", "metal"]
 ---
 
 <!-- One or two sentences on the set — venue, vibe, occasion. -->

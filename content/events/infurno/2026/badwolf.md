@@ -14,7 +14,7 @@ artists: ["badwolf brock"]
 # Required. Match existing pinned genre pages where possible (check
 # content/genres/ for what's already there) so terms merge rather than
 # splinter into near-duplicates (e.g. "Mash Up" vs "mash ups").
-genres: ["disco","disco house","nu-disco","house"]
+genres: ["House", "Disco & Funk"]
 
 # Required for the player to render. platform is either "mixcloud" or "soundcloud".
 # url is the full page URL either way, e.g.
@@ -23,6 +23,7 @@ genres: ["disco","disco house","nu-disco","house"]
 # height is optional (defaults: mixcloud 400, soundcloud 166).
 embed:
   url: "https://www.mixcloud.com/BadwolfBrock/badwolf-live-infurno-2026/"
+original_genres: ["disco", "disco house", "nu-disco", "house"]
 ---
 
 Playing Live at Infurno 2026, my afternoon set for the dance floor! For a festival afternoon, I chose a smooth and easy disco sound, mixing a danceable beat with a mellow tempo. Disco and sunshine was very much the order of the day, and this set was pitched at bringing joy and funky vibes to the tribe.

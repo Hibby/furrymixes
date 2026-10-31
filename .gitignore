@@ -2,3 +2,5 @@ public/
 *.lock
 content/uncategorised/
 .DS_Store
+__pycache__/
+*.py[cod]

@@ -3,8 +3,9 @@ embed:
   url: "https://www.mixcloud.com/AceyWoofer/yorkshirefurs-2026-class-of-26-summer-party-mix/"
 date: 2026-08-27
 artists: ["acey"]
-genres: ["dj edits / bootlegs", "electro pop", "remixes", "electro house"]
+genres: ["House", "Pop & Open Format"]
 title: ""
+original_genres: ["dj edits / bootlegs", "electro pop", "remixes", "electro house"]
 ---
 
 My set from the Yorkshire Furs 2026 Summer Party.

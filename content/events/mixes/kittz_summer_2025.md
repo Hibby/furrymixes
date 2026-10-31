@@ -2,9 +2,10 @@
 date: 2025-10-25
 title: "Kittz @ Summer '25"
 artists: ["kittz"]
-genres: ["breaks","uk garage"]
+genres: ["UK Garage & Bass", "Breaks & Electronic"]
 embed:
   url: "https://www.mixcloud.com/kittz/kittz-summer-25/"
+original_genres: ["breaks", "uk garage"]
 ---
 
 With having so many gigs this summer (a wonderful problem to have) and doing a bunch of travel around them, there was no way I could put together something up to my own standards which I'd have been proud of for all of them.

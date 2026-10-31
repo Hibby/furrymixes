@@ -3,8 +3,9 @@ embed:
   url: "https://www.mixcloud.com/BadwolfBrock/badwolf-moonlight-mix-april-2026/"
 date: 2026-04-03
 artists: ["Badwolf Brock"]
-genres: ["house", "deep house", "chillout"]
+genres: ["House", "Chill & Ambient"]
 title: "Badwolf Moonlight Mix April 2026"
+original_genres: ["house", "deep house", "chillout"]
 ---
 
 This is my Moonlight Mix for Spring from April 2026! Please enjoy.

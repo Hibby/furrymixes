@@ -3,6 +3,7 @@ embed:
   url: "https://www.mixcloud.com/Rivaclaw/dj-renby-animalz-summer-2023/"
 date: 2023-06-28
 artists: ["Rivaclaw"]
-genres: ["uk hardcore", "happy hardcore"]
+genres: ["Hard Dance"]
 title: ""
+original_genres: ["uk hardcore", "happy hardcore"]
 ---

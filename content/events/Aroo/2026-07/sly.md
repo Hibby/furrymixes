@@ -3,8 +3,9 @@ embed:
   url: "https://www.mixcloud.com/thatslymf/sly-aroo-loud-exchange-dance-7-18-26/"
 date: 2026-07-18T20:00:00+0400
 artists: ["Sly"]
-genres: ["minimal tech house", "bass house", "techno", "uk garage", "multi-genre"]
+genres: ["House", "Techno", "UK Garage & Bass", "Pop & Open Format"]
 title: ""
+original_genres: ["minimal tech house", "bass house", "techno", "uk garage", "multi-genre"]
 ---
 Absolute banger night. Honestly, my favorite set in my entire 15 years of DJing. The energy was insane and we SOLD OUT THE SHOW WTF?? (that's still crazy to me ngl)
 

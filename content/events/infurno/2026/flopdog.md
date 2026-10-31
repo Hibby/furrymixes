@@ -6,7 +6,8 @@ date: 2026-06-11T22:00:00+01:00
 
 artists: ["Floppiest Dog"]
 
-genres: ["neurofunk","drum & bass","dubstep"]
+genres: ["Drum & Bass", "Dubstep & Bass"]
+original_genres: ["neurofunk", "drum & bass", "dubstep"]
 ---
 
 <!-- One or two sentences on the set — venue, vibe, occasion. -->

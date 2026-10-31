@@ -3,9 +3,10 @@ embed:
   url: "https://www.mixcloud.com/shovel-/shovel-core-element-25-jungleneurofunk/"
 date: 2025-08-17T20:00:00+0100
 artists: ["Shovel"]
-genres: ["drum and bass", "jungle", "neurofunk"]
+genres: ["Drum & Bass"]
 title: ""
 venue: "Experiment-1"
+original_genres: ["drum and bass", "jungle", "neurofunk"]
 ---
 
 eclectic, heavy and messed up beats @ CE! <3

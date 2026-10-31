@@ -6,8 +6,9 @@ date: 2023-05-27
 
 artists: ["Awkore"]
 
-genres: ["rock","pop","grunge","metal","emo"]
+genres: ["Pop & Open Format", "Alternative & Other"]
 venue: "Mainstage"
+original_genres: ["rock", "pop", "grunge", "metal", "emo"]
 ---
 
 <!-- One or two sentences on the set — venue, vibe, occasion. -->

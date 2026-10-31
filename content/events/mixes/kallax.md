@@ -3,8 +3,9 @@ embed:
   url: "https://www.mixcloud.com/snowy1256/furcation-2024-kallax-pho-b2b/"
 date: 2024-11-27
 artists: ["Kallax"]
-genres: ["house", "trance", "drum & bass", "dance-pop", "edm"]
+genres: ["House", "Trance", "Drum & Bass", "Pop & Open Format"]
 title: "Furcation 2024 - Kallax & Pho B2B"
+original_genres: ["house", "trance", "drum & bass", "dance-pop", "edm"]
 ---
 
 A bit of this, a bit of that, all performed inside of a caravan. 

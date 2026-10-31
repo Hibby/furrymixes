@@ -3,10 +3,11 @@ date: 2026-07-18
 
 artists: ["liamm"]
 
-genres: ["house"]
+genres: ["House"]
 
 embed:
   url: "https://www.mixcloud.com/dj-byksr/londonfurs-summer-weekender-2026-summurr-y-house/"
+original_genres: ["house"]
 ---
 
 Summer House hits, Pop-Dance remixes and all-round sunnny vibes B)

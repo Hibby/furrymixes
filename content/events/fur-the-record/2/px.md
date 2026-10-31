@@ -14,7 +14,7 @@ artists: ["Px"]
 # Required. Match existing pinned genre pages where possible (check
 # content/genres/ for what's already there) so terms merge rather than
 # splinter into near-duplicates (e.g. "Mash Up" vs "mash ups").
-genres: ["bassline","uk garage","speed garage"]
+genres: ["UK Garage & Bass"]
 
 # Required for the player to render. platform is either "mixcloud" or "soundcloud".
 # url is the full page URL either way, e.g.
@@ -24,6 +24,7 @@ genres: ["bassline","uk garage","speed garage"]
 embed:
   url: "https://www.mixcloud.com/pixel_p1x3l/speed-garage-to-rock-out-in-the-bog-to-fur-the-record-2-set-301124/"
   height: # for soundcloud only
+original_genres: ["bassline", "uk garage", "speed garage"]
 ---
 
 <!-- One or two sentences on the set — venue, vibe, occasion. -->

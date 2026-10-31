@@ -18,12 +18,9 @@
 </p>
 {{ end }}
 
-{{ if .Params.genres }}
-<p>
-  Genres:
-  {{ range .Params.genres }}
-    <a href="{{ "/genres/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>{{ if not (eq . (index $.Params.genres (sub (len $.Params.genres) 1))) }}, {{ end }}
-  {{ end }}
+{{ with .GetTerms "genres" }}
+<p>Genres:
+  {{ range . }}<a href="{{ .RelPermalink }}">{{ .Title }}</a> {{ end }}
 </p>
 {{ end }}
 <content>

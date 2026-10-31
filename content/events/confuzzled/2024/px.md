@@ -6,7 +6,8 @@ date: 2024-05-26T21:00:00+01:00
 
 artists: ["px"]
 
-genres: ["italo disco","disco","hip hop"]
+genres: ["Disco & Funk", "Pop & Open Format"]
 venue: "Animalz"
+original_genres: ["italo disco", "disco", "hip hop"]
 ---
 Playing tracks by Crazy Penis, That's Not An Edit, Pell Young Franco MXXWLL, Ravyn Lenae, Appleby, SG Lewis/J Warner and more.

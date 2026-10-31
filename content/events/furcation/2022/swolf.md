@@ -3,8 +3,9 @@ embed:
   url: "https://www.mixcloud.com/djswolfuk/furcation-2022-live-set/"
 date: 2022-11-13
 artists: ["swolf"]
-genres: ["electropop", "open format", "mash ups"]
+genres: ["Pop & Open Format"]
 title: ""
+original_genres: ["electropop", "open format", "mash ups"]
 ---
 
 Live Set Recorded at Furcation 2022 - Saturday 12th November

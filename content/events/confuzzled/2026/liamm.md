@@ -6,8 +6,9 @@ date: 2026-05-25
 
 artists: ["liamm"]
 
-genres: ["house",]
+genres: ["House"]
 venue: "Brightsmith"
+original_genres: ["house"]
 ---
 
 ## Tracklist

@@ -3,8 +3,9 @@ embed:
   url: "https://www.mixcloud.com/AceyWoofer/dj-acey-yorkshirefurs-summer-party-2024/"
 date: 2024-08-31
 artists: ["acey"]
-genres: ["pop", "summer vibes", "bounce", "chilled"]
+genres: ["Pop & Open Format"]
 title: ""
+original_genres: ["pop", "summer vibes", "bounce", "chilled"]
 ---
 
 Part of my set at the YorkshireFurs 2024 Summer Party... unfortunately didn't

@@ -3,9 +3,10 @@ embed:
   url: "https://www.mixcloud.com/dj-byksr/core-element-2026-jazz-house/"
 date: 2026-08-16T16:00:00+0100
 artists: ["Liamm"]
-genres: ["jazz house", "house", "funky house", "chill house"]
+genres: ["House", "Chill & Ambient"]
 title: ""
 venue: "Bar"
+original_genres: ["jazz house", "house", "funky house", "chill house"]
 ---
 
 A Jazzy house set played at Core Element 2026's Bar. 

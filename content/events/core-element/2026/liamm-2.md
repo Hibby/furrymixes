@@ -3,9 +3,10 @@ embed:
   url: "https://www.mixcloud.com/dj-byksr/core-element-2026-piano-house/"
 date: 2026-08-15T19:00:00+0100
 artists: ["Liamm"]
-genres: ["piano house", "house", "tropical house", "pop dance house"]
+genres: ["House"]
 title: ""
 venue: "Alter"
+original_genres: ["piano house", "house", "tropical house", "pop dance house"]
 ---
 
 A Re-Recording of my Piano House set I performed on the Main Stage of Core Element, 2026. 

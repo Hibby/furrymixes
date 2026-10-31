@@ -14,7 +14,7 @@ artists: ["vesper"]
 # Required. Match existing pinned genre pages where possible (check
 # content/genres/ for what's already there) so terms merge rather than
 # splinter into near-duplicates (e.g. "Mash Up" vs "mash ups").
-genres: ["deep house","bass house"]
+genres: ["House"]
 
 # Required for the player to render. platform is either "mixcloud" or "soundcloud".
 # url is the full page URL either way, e.g.
@@ -23,6 +23,7 @@ genres: ["deep house","bass house"]
 # height is optional (defaults: mixcloud 400, soundcloud 166).
 embed:
   url: "https://www.mixcloud.com/noodlecollie/lfm-ad-april-2026-deep-house/"
+original_genres: ["deep house", "bass house"]
 ---
 
 <!-- One or two sentences on the set — venue, vibe, occasion. -->

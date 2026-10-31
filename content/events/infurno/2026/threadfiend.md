@@ -14,7 +14,7 @@ artists: ["Threadfiend"]
 # Required. Match existing pinned genre pages where possible (check
 # content/genres/ for what's already there) so terms merge rather than
 # splinter into near-duplicates (e.g. "Mash Up" vs "mash ups").
-genres: ["genrefluid"]
+genres: ["Pop & Open Format"]
 
 # Required for the player to render. platform is either "mixcloud" or "soundcloud".
 # url is the full page URL either way, e.g.
@@ -23,6 +23,7 @@ genres: ["genrefluid"]
 # height is optional (defaults: mixcloud 400, soundcloud 166).
 embed:
   url: "https://soundcloud.com/threadfiend/infurno-2026"
+original_genres: ["genrefluid"]
 ---
 
 <!-- One or two sentences on the set — venue, vibe, occasion. -->

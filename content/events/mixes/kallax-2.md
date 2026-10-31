@@ -3,8 +3,9 @@ embed:
   url: "https://www.mixcloud.com/snowy1256/phos-birthday-mix/"
 date: 2026-01-10
 artists: ["Kallax"]
-genres: ["house", "tech house", "dance-pop"]
+genres: ["House", "Pop & Open Format"]
 title: "Pho's Birthday Mix"
+original_genres: ["house", "tech house", "dance-pop"]
 ---
 
 Set performed for Pho's birthday party in January 2026.

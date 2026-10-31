@@ -14,7 +14,7 @@ artists: ["Tazzle"]
 # Required. Match existing pinned genre pages where possible (check
 # content/genres/ for what's already there) so terms merge rather than
 # splinter into near-duplicates (e.g. "Mash Up" vs "mash ups").
-genres: ["happy hardcore","uk hardcore","j-core"]
+genres: ["Hard Dance"]
 
 # Required for the player to render. platform is either "mixcloud" or "soundcloud".
 # url is the full page URL either way, e.g.
@@ -24,6 +24,7 @@ genres: ["happy hardcore","uk hardcore","j-core"]
 embed:
   url: "https://www.mixcloud.com/DamnTazzle/hardcore-orderscore-live-infurno-25/"
   height: # for soundcloud only
+original_genres: ["happy hardcore", "uk hardcore", "j-core"]
 ---
 
 <!-- One or two sentences on the set — venue, vibe, occasion. -->

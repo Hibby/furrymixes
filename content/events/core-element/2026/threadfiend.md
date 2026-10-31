@@ -3,8 +3,9 @@ embed:
   url: "https://soundcloud.com/threadfiend/core-element-2026-ritual"
 date: 2026-08-15T21:00:00+0100
 artists: ["Threadfiend"]
-genres: ["genrefluid", "drum & bass,funk,dubstep,dance & edm"]
+genres: ["Pop & Open Format"]
 title: ""
+original_genres: ["genrefluid", "drum & bass,funk,dubstep,dance & edm"]
 ---
 
 A month ago today I had the pleasure of playing the ceremony set at Core Element. The festival's theme this year was 'Ritual'. I had a load of fun putting this set together, thanks for coming to check it out.

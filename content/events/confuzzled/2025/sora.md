@@ -14,7 +14,7 @@ artists: ["Sora"]
 # Required. Match existing pinned genre pages where possible (check
 # content/genres/ for what's already there) so terms merge rather than
 # splinter into near-duplicates (e.g. "Mash Up" vs "mash ups").
-genres: ["Drum & Bass","neurofunk"]
+genres: ["Drum & Bass"]
 
 # Required for the player to render. platform is either "mixcloud" or "soundcloud".
 # url is the full page URL either way, e.g.
@@ -24,6 +24,7 @@ genres: ["Drum & Bass","neurofunk"]
 embed:
   url: "https://www.mixcloud.com/sorathebun/torrent-live-confuzzled-2025/"
 venue: "Mainstage"
+original_genres: ["Drum & Bass", "neurofunk"]
 ---
 
 High-energy DnB to move your body, bang your head, and vibrate your soul.

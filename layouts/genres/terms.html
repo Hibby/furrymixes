@@ -1,0 +1,14 @@
+{{ define "main" }}
+{{ if ne (len .Pages) (len hugo.Data.genre_taxonomy.categories) }}
+  {{ errorf "Genre taxonomy must expose exactly the approved categories; run scripts/catalogue.py check" }}
+{{ end }}
+{{ range .Pages }}
+  {{ if not (isset hugo.Data.genre_taxonomy.categories .Title) }}{{ errorf "Unapproved public genre: %s" .Title }}{{ end }}
+{{ end }}
+<content>
+  {{ partial "page-header.html" . }}
+  {{ .Content }}
+
+  {{ partial "card-grid.html" .Pages.ByTitle }}
+</content>
+{{ end }}
