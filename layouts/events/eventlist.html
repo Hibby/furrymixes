@@ -1,12 +1,7 @@
-{{ define "main" }}
-<content>
-  {{ partial "page-header.html" . }}
-  {{ .Content }}
-
-  {{ partial "card-grid.html" .Sections.ByTitle }}
-
-  {{ with .OutputFormats.Get "rss" }}
-    <p><a href="{{ .RelPermalink }}">RSS feed for all events</a></p>
-  {{ end }}
-</content>
-{{ end }}
+{{ define "main" }}{{ partial "page-header.html" . }}
+<div class="prose">
+{{ .Content }}
+</div>
+{{ partial "card-grid.html" .Sections.ByTitle }}{{ with .OutputFormats.Get "RSS" }}
+<p><a href="{{ .RelPermalink }}">All events RSS</a></p>
+{{ end }}{{ end }}

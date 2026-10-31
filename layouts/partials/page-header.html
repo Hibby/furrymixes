@@ -1,13 +1,3 @@
-{{ with .Resources.GetMatch "cover.*" }}
-<div class="page-header{{ if eq $.Params.coverStyle "logo" }} page-header--logo{{ end }}">
-  {{ if eq $.Params.coverStyle "logo" }}
-    <img src="{{ .RelPermalink }}" alt="" class="page-header-img-contain">
-  {{ else }}
-    <img src="{{ .RelPermalink }}" alt="" class="page-header-img-cover">
-  {{ end }}
-</div>
-{{ with $.Params.imageCredit }}
-<p class="image-credit">Image from: <a href="{{ .url | safeURL }}">{{ .text }}</a></p>
-{{ end }}
-{{ end }}
-<h1 style="text-align:left">{{ .Title }}</h1>
+<header class="page-heading">
+  <h1>{{ .Title }}</h1>
+</header>

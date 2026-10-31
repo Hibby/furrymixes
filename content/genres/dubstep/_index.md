@@ -1,5 +1,5 @@
 ---
-title: "Dubstep & Bass"
+title: "Dubstep"
 url: "/genres/dubstep-bass/"
 description: "Dubstep, future bass and related electronic bass styles."
 ---

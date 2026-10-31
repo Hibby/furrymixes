@@ -1,30 +1,29 @@
 {{ define "main" }}
-<content>
-  <p><a href="{{ "artists" | relURL }}">Artists</a></p>
-
-  {{ partial "page-header.html" . }}
-
-  {{ with .Params.socials }}
-  <p>
-    {{ range . }}
-      <a href="{{ .url }}">{{ .platform }}</a>&nbsp;
-    {{ end }}
-  </p>
-  {{ end }}
-  {{ .Content }}
-
-  <h3>Sets</h3>
-  {{ range .Pages.ByDate.Reverse }}
-  <div style="margin-bottom:2em">
-    <a href="{{ .Permalink }}"><strong>{{ partial "set-title.html" . }}</strong></a>
-    {{ partial "player.html" . }}
+<p class="breadcrumb"><a href="{{ "/artists/" | relURL }}">← Artists</a></p>
+<div class="artist-intro{{ if .Resources.GetMatch "cover.*" }} artist-intro--with-image{{ end }}">
+{{ partial "artist-image.html" . }}
+<div>
+{{ partial "page-header.html" . }}
+<p class="muted">{{ len .RegularPages }} recordings in the archive</p>
+{{ with .Params.socials }}
+  <div class="badges">
+    {{ range . }}<a class="badge" href="{{ .url }}">{{ .platform }}</a>{{ end }}
   </div>
-  {{ else }}
-  <p>No sets yet</p>
-  {{ end }}
-
-  {{ with .OutputFormats.Get "rss" }}
-    <p><a href="{{ .RelPermalink }}">RSS feed for {{ $.Title }}</a></p>
-  {{ end }}
-</content>
+{{ end }}
+<div class="prose">{{ .Content }}</div>
+</div>
+</div>
+{{ $events := slice }}
+{{ range .RegularPages }}{{ $events = $events | append .Parent }}{{ end }}
+{{ with $events | uniq }}
+  <section class="associations" aria-labelledby="events-editions">
+    <h2 id="events-editions" class="associations-heading">Events & editions ({{ len . }})</h2>
+    <div class="badges">
+      {{ range . }}<a class="badge" href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}
+    </div>
+  </section>
+{{ end }}
+<h2>Recordings</h2>
+{{ partial "set-list.html" (dict "page" . "sets" .RegularPages.ByDate.Reverse) }}
+{{ with .OutputFormats.Get "RSS" }}<p><a href="{{ .RelPermalink }}">Artist RSS</a></p>{{ end }}
 {{ end }}

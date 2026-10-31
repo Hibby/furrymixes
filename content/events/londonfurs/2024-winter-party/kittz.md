@@ -5,7 +5,7 @@ date: 2024-12-07
 
 artists: ["meowmix","px","kittz"]
 
-genres: ["UK Garage & Bass", "Disco & Funk", "Breaks & Electronic"]
+genres: ["UK Garage & Bassline", "Disco & Funk", "Breaks & Electronic"]
 
 embed:
   url: "https://www.mixcloud.com/kittz/meowmix-lfm-winter-party-24/"

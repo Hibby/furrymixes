@@ -3,8 +3,9 @@ embed:
   url: "https://www.mixcloud.com/sylvix/sylvix-uncaged-sept-2026/"
 date: 2026-09-12
 artists: ["Sylvix"]
-genres: ["future bounce", "breaks", "bassline / niche", "house"]
+genres: ["House", "UK Garage & Bassline", "Breaks & Electronic"]
 title: ""
+original_genres: ["future bounce", "breaks", "bassline / niche", "house"]
 ---
 
 Full recording of my set at September's Uncaged, at the Move Nightclub in Exeter.

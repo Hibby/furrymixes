@@ -17,7 +17,7 @@ from taxonomy import ROOT, Taxonomy
 class HTML(HTMLParser):
     def __init__(self, text):
         super().__init__()
-        self.links, self.frames = [], []
+        self.links, self.frames, self.buttons, self.images, self.regions = [], [], [], [], []
         self.feed(text)
 
     def handle_starttag(self, tag, attrs):
@@ -26,6 +26,12 @@ class HTML(HTMLParser):
             self.links.append(attrs['href'])
         if tag == 'iframe':
             self.frames.append(attrs.get('src'))
+        if tag == 'button':
+            self.buttons.append(attrs)
+        if tag == 'img':
+            self.images.append(attrs)
+        if attrs.get('class') == 'player-region':
+            self.regions.append(attrs)
 
 
 @unittest.skipUnless(shutil.which('hugo'), 'Install Hugo to run site integration tests')
@@ -82,10 +88,76 @@ class SiteTests(unittest.TestCase):
             self.assertIsInstance(data['original_genres'], list)
             for category in data['genres']:
                 slug = self.taxonomy.categories[category]
-                genre = HTML((self.build / 'genres' / slug / 'index.html').read_text())
-                self.assertIn(page['permalink'], genre.links, (page['path'], category))
+                genre_pages = [self.build / 'genres' / slug / 'index.html']
+                genre_pages += list((self.build / 'genres' / slug / 'page').glob('*/index.html'))
+                links = [link for path in genre_pages for link in HTML(path.read_text()).links]
+                self.assertIn(page['permalink'], links, (page['path'], category))
                 self.assertIn('/genres/' + slug + '/', parser.links)
         self.assertGreater(checked, 0)
+
+    def test_infinite_sets_preserves_static_fallback_and_is_catalogue_only(self):
+        sets = (self.build / 'sets/index.html').read_text()
+        self.assertIn('data-infinite-sets', sets)
+        self.assertIn('infinite-sets.min.', sets)
+        self.assertIn('/sets/page/2/', HTML(sets).links)
+        self.assertIn('rel=next', sets)
+        self.assertEqual(len(HTML(sets).buttons), 24)
+        for path in ['index.html', 'genres/house/index.html', 'artists/kittz/index.html']:
+            html = (self.build / path).read_text()
+            self.assertNotIn('infinite-sets.min.', html)
+            self.assertNotIn('data-infinite-sets', html)
+
+    def test_existing_artist_images_and_credits_are_preserved(self):
+        directory = HTML((self.build / 'artists/index.html').read_text())
+        for cover in (ROOT / 'content/artists').glob('*/cover.*'):
+            artist = cover.parent.name
+            html = (self.build / 'artists' / artist / 'index.html').read_text()
+            image_url = f'/artists/{artist}/{cover.name}'
+            self.assertIn(image_url, [image['src'] for image in HTML(html).images])
+            self.assertIn(image_url, [image['src'] for image in directory.images])
+            self.assertEqual((self.build / image_url.lstrip('/')).read_bytes(), cover.read_bytes())
+            _, data, _ = read_page(cover.parent / '_index.md')
+            if data.get('imageCredit'):
+                self.assertIn('Image from:', html)
+                self.assertIn(data['imageCredit']['text'], html)
+                if data['imageCredit'].get('url'):
+                    self.assertIn(data['imageCredit']['url'], HTML(html).links)
+        kittz = (self.build / 'artists/kittz/index.html').read_text()
+        self.assertNotIn('class=artist-image', kittz)
+        self.assertNotIn('artist-intro--with-image', kittz)
+
+    def test_lazy_cards_platforms_metadata_and_pagination(self):
+        home = HTML((self.build / 'index.html').read_text())
+        self.assertEqual(len(home.buttons), 6)
+        self.assertFalse(home.frames)
+        self.assertTrue(home.images)
+        for image in home.images:
+            self.assertTrue(image['src'].startswith(('/covers/', '/artists/')))
+            self.assertEqual(image['width'], image['height'])
+            self.assertEqual(image['loading'], 'lazy')
+        platforms = set()
+        for path in [self.build / 'sets/index.html', *sorted((self.build / 'sets/page').glob('*/index.html'))]:
+            if path.parent.name == '1':  # Hugo's page-one redirect
+                continue
+            parser = HTML(path.read_text())
+            self.assertFalse(parser.frames, str(path))
+            self.assertLessEqual(len(parser.buttons), 24)
+            region_ids = {region['id'] for region in parser.regions}
+            for button in parser.buttons:
+                self.assertEqual(button['aria-expanded'], 'false')
+                self.assertIn(button['aria-controls'], region_ids)
+                self.assertIn('hidden', button)
+                src = button['data-player-src']
+                if 'mixcloud' in src:
+                    platforms.add('Mixcloud')
+                    self.assertIn('feed=%2F', src)
+                else:
+                    platforms.add('SoundCloud')
+                    self.assertIn('url=https%3A%2F%2F', src)
+                    self.assertIn('auto_play=false', src)
+            self.assertTrue(any('/artists/' in link for link in parser.links))
+            self.assertTrue(any('/genres/' in link for link in parser.links))
+        self.assertEqual(platforms, {'Mixcloud', 'SoundCloud'})
 
     def test_feeds_events_artists_and_staging_isolation(self):
         self.assertTrue((self.build / 'events/index.html').exists())

@@ -3,7 +3,7 @@ embed:
   url: "https://www.mixcloud.com/DjQuest666/animalz-april-dj-quest-upstairs-set-rerun/"
 date: 2025-04-11
 artists: ["DJ Quest"]
-genres: ["UK Garage & Bass"]
+genres: ["UK Garage & Bassline"]
 title: ""
 venue: "Cruz 101"
 original_genres: ["uk garage", "uk bass", "bootlegs", "2-step garage"]

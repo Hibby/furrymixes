@@ -6,7 +6,7 @@ date: 2025-05-25T21:00:00+01:00
 
 artists: ["Reivan"]
 
-genres: ["House", "UK Garage & Bass"]
+genres: ["House", "UK Garage & Bassline"]
 
 venue: "Mainstage"
 original_genres: ["bass house", "speed garage", "uk garage"]

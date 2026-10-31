@@ -1,0 +1,9 @@
+{{ $art := partial "set-artwork.html" . }}
+<div class="set-cover">
+  {{ if $art.available }}
+    <img src="{{ $art.url }}" alt="Cover for {{ partial "set-title.html" . | plainify }}"
+      width="320" height="320" loading="lazy" decoding="async">
+  {{ else }}
+    {{ partial "set-artwork-fallback.html" $art }}
+  {{ end }}
+</div>

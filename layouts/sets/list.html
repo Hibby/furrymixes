@@ -1,0 +1,5 @@
+{{ define "main" }}{{ partial "page-header.html" . }}
+<div class="prose">
+{{ .Content }}
+</div>
+{{ partial "set-list.html" (dict "page" . "sets" (where site.RegularPages "Type" "events").ByDate.Reverse) }}{{ end }}

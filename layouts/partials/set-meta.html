@@ -1,0 +1,24 @@
+<p class="event-context">
+  <a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a>
+  {{ with .Parent.Parent }}
+    {{ if and (not .IsHome) (ne .RelPermalink "/events/") }}
+      · <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    {{ end }}
+  {{ end }}
+</p>
+<p class="artist-names">
+  {{ range $i, $term := .GetTerms "artists" }}
+    {{ if $i }}, {{ end }}<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  {{ end }}
+</p>
+<div class="badges" aria-label="Genres">
+  {{ range .GetTerms "genres" }}
+    <a class="badge" href="{{ .RelPermalink }}">{{ .Title }}</a>
+  {{ end }}
+</div>
+<p class="set-facts">
+  {{ if not .Date.IsZero }}
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan 2006" }}</time>
+  {{ end }}
+  {{ with .Params.venue }} · {{ . }}{{ end }}
+</p>

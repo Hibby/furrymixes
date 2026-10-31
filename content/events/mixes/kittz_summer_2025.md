@@ -2,7 +2,7 @@
 date: 2025-10-25
 title: "Kittz @ Summer '25"
 artists: ["kittz"]
-genres: ["UK Garage & Bass", "Breaks & Electronic"]
+genres: ["UK Garage & Bassline", "Breaks & Electronic"]
 embed:
   url: "https://www.mixcloud.com/kittz/kittz-summer-25/"
 original_genres: ["breaks", "uk garage"]

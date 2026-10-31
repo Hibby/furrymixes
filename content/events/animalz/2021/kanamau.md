@@ -3,7 +3,7 @@ embed:
   url: "https://www.mixcloud.com/kanamau/club-animalz-2021/"
 date: 2021-11-14
 artists: ["KanaMau"]
-genres: ["House", "Dubstep & Bass"]
+genres: ["House", "Dubstep"]
 title: ""
 original_genres: ["bass", "bass house", "bass music", "dubstep", "dirty house / dirty electro house / big room house"]
 ---

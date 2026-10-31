@@ -3,8 +3,9 @@ embed:
   url: "https://www.mixcloud.com/bit-fox/megaplex-2016-friday-august-5th-11pm-12am/"
 date: 2016-08-10
 artists: ["bitfox"]
-genres: ["tropicalhouse", "progressivehouse", "throwbacks", "top40remixes", "house"]
+genres: ["House", "Pop & Open Format"]
 title: ""
+original_genres: ["tropicalhouse", "progressivehouse", "throwbacks", "top40remixes", "house"]
 ---
 
 Here it is, my live set from Megaplex 2016!

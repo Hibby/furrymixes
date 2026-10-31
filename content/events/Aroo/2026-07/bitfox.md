@@ -3,7 +3,7 @@ embed:
   url: "https://www.mixcloud.com/bit-fox/live-from-aroo-in-orlando-fl-7182026/"
 date: 2026-07-18T19:00:00+0400
 artists: ["BitFox"]
-genres: ["House", "Drum & Bass", "Dubstep & Bass", "Pop & Open Format"]
+genres: ["House", "Drum & Bass", "Dubstep", "Pop & Open Format"]
 title: ""
 original_genres: ["house", "top 40 remixes", "trap", "dubstep", "drum & bass"]
 ---

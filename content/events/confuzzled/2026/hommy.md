@@ -6,7 +6,7 @@ date: 2026-05-24T00:00:00+0100
 
 artists: ["Hommy"]
 
-genres: ["UK Garage & Bass"]
+genres: ["UK Garage & Bassline"]
 venue: "Mainstage"
 original_genres: ["future garage", "uk garage"]
 ---

@@ -1,0 +1,16 @@
+{{/* All recording lists use one paginator and card implementation. */}}
+{{ $pager := .page.Paginate .sets 24 }}
+<div class="set-list"{{ if eq .page.Section "sets" }} data-infinite-sets{{ end }}>
+  {{ range $pager.Pages }}
+    {{ partial "set-card.html" . }}
+  {{ else }}
+    <p>No recordings yet. Explore the <a href="{{ "/sets/" | relURL }}">set archive</a>.</p>
+  {{ end }}
+</div>
+{{ if gt $pager.TotalPages 1 }}
+  <nav class="pagination" aria-label="Recording pages">
+    {{ with $pager.Prev }}<a href="{{ .URL }}">← Newer sets</a>{{ end }}
+    <span>Page {{ $pager.PageNumber }} of {{ $pager.TotalPages }}</span>
+    {{ with $pager.Next }}<a rel="next" href="{{ .URL }}">Older sets →</a>{{ end }}
+  </nav>
+{{ end }}

@@ -1,0 +1,9 @@
+{{ with .Resources.GetMatch "cover.*" }}
+  <figure class="artist-image">
+    <img src="{{ .RelPermalink }}" alt="Artwork for {{ $.Title }}"
+      width="{{ .Width }}" height="{{ .Height }}" decoding="async">
+    {{ with $.Params.imageCredit }}
+      <figcaption>Image from: {{ if .url }}<a href="{{ .url }}">{{ .text }}</a>{{ else }}{{ .text }}{{ end }}</figcaption>
+    {{ end }}
+  </figure>
+{{ end }}

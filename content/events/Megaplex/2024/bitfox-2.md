@@ -3,8 +3,9 @@ embed:
   url: "https://www.mixcloud.com/bit-fox/atrium-set-live-at-megaplex-2024/"
 date: 2024-09-05
 artists: ["bitfox"]
-genres: ["house", "top 40 remixes", "hyperpop", "trap", "mashups"]
+genres: ["House", "Pop & Open Format"]
 title: ""
+original_genres: ["house", "top 40 remixes", "hyperpop", "trap", "mashups"]
 ---
 
 Here's the live audio from my atrium set at Megaplex, which took place at the Hyatt Regency Orlando on Sunday, September 1st 2024 from 1pm-2pm ish.

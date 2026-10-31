@@ -3,8 +3,9 @@ embed:
   url: "https://www.mixcloud.com/thatslymf/we-could-be-gold-faux-live-megaplex-2014/"
 date: 2014-07-29
 artists: ["Sly"]
-genres: ["electro house", "trap", "moombah", "progressive house", "big room"]
+genres: ["House"]
 title: ""
+original_genres: ["electro house", "trap", "moombah", "progressive house", "big room"]
 ---
 
 Thanks to everyone who came out on Friday night. We sure kicked off Megaplex weekend damn proper. I'm so happy with how this turned out (especially since there are no audio cutouts in the recording!) 

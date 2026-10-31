@@ -1,17 +1,5 @@
-{{- $artwork := partial "set-artwork.html" . -}}
-{{ with .Params.embed }}
-  {{ if in .url "mixcloud.com" }}
-    {{ $feed := .url | replaceRE `^https?://(www\.)?mixcloud\.com` "" | urlquery }}
-    <iframe width="100%" height="{{ .height | default 400 }}"
-      src="https://player-widget.mixcloud.com/widget/iframe/?feed={{ $feed | safeURL }}"
-      frameborder="0" loading="lazy"
-      allow="encrypted-media; fullscreen; autoplay; idle-detection; speaker-selection; web-share;">
-    </iframe>
-  {{ else if in .url "soundcloud.com" }}
-    <iframe width="100%" height="{{ .height | default 166 }}" scrolling="no" frameborder="no" loading="lazy" allow="autoplay"
-      src="https://w.soundcloud.com/player/?url={{ .url | safeURL }}&color=%23ff5500&auto_play=false&show_comments=true&visual=true">
-    </iframe>
-  {{ else if .url }}
-    <p><a href="{{ .url | safeURL }}">Listen: {{ .url }}</a></p>
-  {{ end }}
-{{ end }}
+{{ $embed := partial "embed-data.html" . }}
+{{ if $embed.url }}
+<iframe class="embedded-player" width="100%" height="{{ $embed.height }}" src="{{ $embed.url | safeURL }}" title="{{ $embed.platform }} player: {{ partial "set-title.html" . | plainify }}" loading="lazy" allow="encrypted-media; fullscreen; autoplay" allowfullscreen></iframe>
+<p><a href="{{ $embed.source }}">Open on {{ $embed.platform }} ↗</a></p>
+{{ else }}{{ with .Params.embed.url }}<p><a href="{{ . }}">Listen to the original recording ↗</a></p>{{ end }}{{ end }}

@@ -1,23 +1,13 @@
-{{ $p := . }}
-{{ if $p.Title }}
-  {{ $p.Title }}
-{{ else }}
-  {{ $artistNames := slice }}
-  {{ range $p.GetTerms "artists" }}
-    {{ $artistNames = $artistNames | append .Title }}
-  {{ end }}
-  {{ $artists := delimit $artistNames ", " }}
-  {{ $edition := $p.Parent }}
-
-  {{ $hasTime := or (ne $p.Date.Hour 0) (ne $p.Date.Minute 0) }}
-  {{ $when := $p.Date.Format "Monday" }}
-  {{ if $hasTime }}
-    {{ $when = printf "%s, %s" ($p.Date.Format "Monday") ($p.Date.Format "15:04") }}
-  {{ end }}
-
-  {{ if $p.Params.venue }}
-    {{ printf "%s // %s (%s) - %s Set" $artists $edition.Title $when $p.Params.venue }}
-  {{ else }}
-    {{ printf "%s // %s (%s)" $artists $edition.Title $when }}
-  {{ end }}
-{{ end }}
+{{- if .Title -}}
+  {{- .Title -}}
+{{- else -}}
+  {{- $names := slice -}}
+  {{- range .GetTerms "artists" -}}{{- $names = $names | append .Title -}}{{- end -}}
+  {{- $when := .Date.Format "Monday" -}}
+  {{- if or (ne .Date.Hour 0) (ne .Date.Minute 0) -}}
+    {{- $when = .Date.Format "Monday, 15:04" -}}
+  {{- end -}}
+  {{- $title := printf "%s // %s (%s)" (delimit $names ", ") .Parent.Title $when -}}
+  {{- with .Params.venue -}}{{- $title = printf "%s - %s Set" $title . -}}{{- end -}}
+  {{- $title -}}
+{{- end -}}

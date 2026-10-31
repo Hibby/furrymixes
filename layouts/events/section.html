@@ -1,68 +1,35 @@
 {{ define "main" }}
-<content>
-  {{ if and .Parent .Parent.Parent (not .Parent.Parent.IsHome) }}
-  <p>
-    <a href="{{ .Parent.Permalink }}">{{ .Parent.Title }}</a>
+<p class="breadcrumb"><a href="{{ .Parent.RelPermalink }}">← {{ .Parent.Title }}</a></p>
+{{ partial "page-header.html" . }}
+{{ if not .Date.IsZero }}
+  <p class="muted">
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan 2006" }}</time>
+    {{ with .Params.endDate }} – {{ (time.AsTime .).Format "2 Jan 2006" }}{{ end }}
   </p>
+{{ end }}
+{{ with .Params.website }}<p><a href="{{ . }}">Official event site ↗</a></p>{{ end }}
+<div class="prose">{{ .Content }}</div>
+{{ with .Sections }}
+  <h2>Editions</h2>
+  {{ range .GroupByDate "2006" "desc" }}
+    <h3>{{ if eq .Key "0001" }}More editions{{ else }}{{ .Key }}{{ end }}</h3>
+    {{ partial "card-grid.html" .Pages.ByDate.Reverse }}
   {{ end }}
-
-  {{ partial "page-header.html" . }}
-
-  {{ if not .Sections }}
-  {{ $start := .Date }}
-  {{ if not $start.IsZero }}
-  <p style="text-align:left">
-    {{ with .Params.endDate }}
-      {{ $end := . | time.AsTime }}
-      {{ if ne ($end.Format "2006-01-02") ($start.Format "2006-01-02") }}
-        {{ if and (eq $start.Year $end.Year) (eq $start.Month $end.Month) }}
-          <time datetime='{{ $start.Format "2006-01-02" }}'>{{ $start.Format "02" }}</time>–<time datetime='{{ $end.Format "2006-01-02" }}'>{{ $end.Format "02 Jan 2006" }}</time>
-        {{ else }}
-          <time datetime='{{ $start.Format "2006-01-02" }}'>{{ $start.Format "02 Jan 2006" }}</time> – <time datetime='{{ $end.Format "2006-01-02" }}'>{{ $end.Format "02 Jan 2006" }}</time>
-        {{ end }}
-      {{ else }}
-        <time datetime='{{ $start.Format "2006-01-02" }}'>{{ $start.Format (default "02 Jan 2006" $.Site.Params.dateFormat) }}</time>
-      {{ end }}
-    {{ else }}
-      <time datetime='{{ $start.Format "2006-01-02" }}'>{{ $start.Format (default "02 Jan 2006" $.Site.Params.dateFormat) }}</time>
-    {{ end }}
-  </p>
-  {{ end }}
-  {{ end }}
-  {{ with .Params.website }}
-  <p style="text-align:left"><a href="{{ . | safeURL }}">Official site</a></p>
-  {{ end }}
-
-
-  {{ .Content }}
-
-  {{ if .Sections }}
-    <h3>Editions</h3>
-    {{ partial "card-grid.html" .Sections.ByDate.Reverse }}
-
-    <h3>All sets</h3>
-    {{ range .RegularPagesRecursive.ByDate.Reverse }}
-    <div style="margin-bottom:2em">
-      <a href="{{ .Permalink }}"><strong>{{ partial "set-title.html" . }}</strong></a>
-      {{ partial "player.html" . }}
+{{ end }}
+{{ $sets := .RegularPagesRecursive.ByDate.Reverse }}
+<h2>Recordings <span class="count">{{ len $sets }}</span></h2>
+{{ $artists := slice }}
+{{ range $sets }}
+  {{ range .GetTerms "artists" }}{{ $artists = $artists | append . }}{{ end }}
+{{ end }}
+{{ with $artists | uniq }}
+  <section class="associations" aria-labelledby="participating-artists">
+    <h3 id="participating-artists">Participating artists ({{ len . }})</h3>
+    <div class="badges">
+      {{ range . }}<a class="badge" href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}
     </div>
-    {{ else }}
-    <p>No sets yet</p>
-    {{ end }}
-  {{ else }}
-    <h3>Sets</h3>
-    {{ range .Pages.ByDate.Reverse }}
-    <div style="margin-bottom:2em">
-      <a href="{{ .Permalink }}"><strong>{{ partial "set-title.html" . }}</strong></a>
-      {{ partial "player.html" . }}
-    </div>
-    {{ else }}
-    <p>No sets yet</p>
-    {{ end }}
-  {{ end }}
-
-  {{ with .OutputFormats.Get "rss" }}
-    <p><a href="{{ .RelPermalink }}">RSS feed for this {{ if $.Sections }}listing{{ else }}edition{{ end }}</a></p>
-  {{ end }}
-</content>
+  </section>
+{{ end }}
+{{ partial "set-list.html" (dict "page" . "sets" $sets) }}
+{{ with .OutputFormats.Get "RSS" }}<p><a href="{{ .RelPermalink }}">Event RSS</a></p>{{ end }}
 {{ end }}

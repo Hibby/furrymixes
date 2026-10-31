@@ -3,7 +3,7 @@ embed:
   url: "https://www.mixcloud.com/sylvix/sylvix-scotiacon-2026-main-stage/"
 date: 2026-02-08
 artists: ["Sylvix"]
-genres: ["House", "UK Garage & Bass"]
+genres: ["House", "UK Garage & Bassline"]
 title: ""
 original_genres: ["house", "future house", "bass house", "garage (ukg)", "future garage"]
 ---

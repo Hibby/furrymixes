@@ -3,7 +3,7 @@ embed:
   url: "https://www.mixcloud.com/sylvix/sylvix-core-element-26/"
 date: 2026-08-16T22:00:00+0100
 artists: ["Sylvix"]
-genres: ["House", "UK Garage & Bass", "Dubstep & Bass"]
+genres: ["House", "UK Garage & Bassline", "Dubstep"]
 title: ""
 venue: "Alter"
 original_genres: ["future bass", "bass house", "future garage", "colour bass"]

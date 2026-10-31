@@ -3,7 +3,7 @@ embed:
   url: "https://www.mixcloud.com/djinnbanter/club-animalz-jan-2025/"
 date: 2025-04-18
 artists: ["Ziggy"]
-genres: ["Techno", "UK Garage & Bass"]
+genres: ["Techno", "UK Garage & Bassline"]
 title: ""
 venue: "Cruz 101"
 original_genres: ["techno", "uk garage"]

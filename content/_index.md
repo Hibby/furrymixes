@@ -1,5 +1,5 @@
 ---
-title: "Furry Mixes"
+title: "furrymix.es"
 ---
 
 Furrymix.es is a catalogue of DJ sets from furries around the world.

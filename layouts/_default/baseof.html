@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>{{ if not .IsHome }}{{ partial "set-title.html" . | plainify }} · {{ end }}{{ site.Title }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{ with .OutputFormats.Get "RSS" }}
+    <link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ $.Title }} RSS">
+  {{ end }}
+  {{ with resources.Get "css/site.css" }}
+    {{ with . | minify | fingerprint }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+    {{ end }}
+  {{ end }}
+  {{ with resources.Get "js/players.js" }}
+    {{ with . | minify | fingerprint }}
+      <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+    {{ end }}
+  {{ end }}
+  {{ if eq .Section "sets" }}
+    {{ with resources.Get "js/infinite-sets.js" }}
+      {{ with . | minify | fingerprint }}
+        <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ partial "custom_head.html" . }}
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="{{ "/" | relURL }}">{{ site.Title }}</a>
+      <nav aria-label="Main navigation">
+        {{ range site.Menus.main }}
+          <a href="{{ .URL | relURL }}"{{ if eq $.RelPermalink .URL }} aria-current="page"{{ end }}>{{ .Name }}</a>
+        {{ end }}
+      </nav>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    {{ block "main" . }}{{ end }}
+  </main>
+  <footer class="site-footer">
+    <p>{{ site.Title }}</p>
+    <div>
+      <a href="{{ "/index.xml" | relURL }}">RSS</a> ·
+      <a href="https://github.com/Hibby/furrymixes">Source & contributions</a> ·
+      <a rel="me" href="https://woof.tech/@furrymixes">Mastodon</a>
+    </div>
+    <p><small>{{ site.Copyright }} · Recordings belong to their respective creators. Built with <a href="https://gohugo.io/">Hugo</a>; originally <a href="https://github.com/janraasch/hugo-bearblog/">Bear</a>.</small></p>
+  </footer>
+</body>
+</html>

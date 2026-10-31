@@ -3,7 +3,7 @@ embed:
   url: "https://www.mixcloud.com/thatslymf/sly-aroo-loud-exchange-dance-7-18-26/"
 date: 2026-07-18T20:00:00+0400
 artists: ["Sly"]
-genres: ["House", "Techno", "UK Garage & Bass", "Pop & Open Format"]
+genres: ["House", "Techno", "UK Garage & Bassline", "Pop & Open Format"]
 title: ""
 original_genres: ["minimal tech house", "bass house", "techno", "uk garage", "multi-genre"]
 ---

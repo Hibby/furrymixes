@@ -1,12 +1,12 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "categories": {
     "House": "house",
     "Techno": "techno",
     "Trance": "trance",
     "Drum & Bass": "drum-bass",
-    "UK Garage & Bass": "uk-garage-bass",
-    "Dubstep & Bass": "dubstep-bass",
+    "UK Garage & Bassline": "uk-garage-bass",
+    "Dubstep": "dubstep-bass",
     "Hard Dance": "hard-dance",
     "Disco & Funk": "disco-funk",
     "Breaks & Electronic": "breaks-electronic",
@@ -105,7 +105,7 @@
       "neurofunk",
       "techstep"
     ],
-    "UK Garage & Bass": [
+    "UK Garage & Bassline": [
       "2-step garage",
       "bassline",
       "bassline / niche",
@@ -121,7 +121,7 @@
       "uk garage",
       "ukg"
     ],
-    "Dubstep & Bass": [
+    "Dubstep": [
       "brostep",
       "chillstep",
       "colour bass",
@@ -389,16 +389,16 @@
       "categories": [
         "Drum & Bass"
       ],
-      "reason": "Site-owner follow-up decision: retain Drum & Bass on this recording alongside the independently supported Dubstep & Bass. Resolves the earlier darkstep/140-midtempo concern."
+      "reason": "Site-owner follow-up decision: retain Drum & Bass on this recording alongside the independently supported Dubstep. Resolves the earlier darkstep/140-midtempo concern."
     },
     "https://www.mixcloud.com/Spirou333/spirous-dj-livestream-23052023/": {
       "mode": "add",
       "categories": [
         "Hard Dance",
         "Drum & Bass",
-        "Dubstep & Bass"
+        "Dubstep"
       ],
-      "reason": "Site-owner follow-up approval: add Hard Dance, Drum & Bass and Dubstep & Bass to House, as explicitly described by the artist. Retain all four categories."
+      "reason": "Site-owner follow-up approval: add Hard Dance, Drum & Bass and Dubstep to House, as explicitly described by the artist. Retain all four categories."
     },
     "https://www.mixcloud.com/DJVally/dream-conquer-pt-ii-live-at-fc-2017/": {
       "mode": "add",

@@ -3,7 +3,7 @@ embed:
   url: "https://www.mixcloud.com/pixel_p1x3l/pixel-club-animalz-aug-25-manchesterfolsom-berlin/"
 date: 2025-09-03
 artists: ["px"]
-genres: ["House", "UK Garage & Bass", "Pop & Open Format"]
+genres: ["House", "UK Garage & Bassline", "Pop & Open Format"]
 title: ""
 original_genres: ["house", "uk garage", "tech house", "mash ups"]
 ---

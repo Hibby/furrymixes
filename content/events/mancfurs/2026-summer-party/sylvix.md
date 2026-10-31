@@ -6,7 +6,7 @@ date: 2026-08-08
 
 artists: ["sylvix"]
 
-genres: ["UK Garage & Bass"]
+genres: ["UK Garage & Bassline"]
 venue: "Mainstage"
 original_genres: ["uk garage", "future garage", "bassline"]
 ---

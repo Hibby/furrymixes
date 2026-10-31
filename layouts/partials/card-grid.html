@@ -1,20 +1,18 @@
 <div class="card-grid">
   {{ range . }}
-    {{ $page := . }}
-    {{ $cover := .Resources.GetMatch "cover.*" }}
-    <a href="{{ .Permalink }}" class="card">
-      <div class="card-image-box{{ if eq $page.Params.coverStyle "logo" }} card-image-box--logo{{ end }}">
-        {{ with $cover }}
-          {{ if eq $page.Params.coverStyle "logo" }}
-            <img src="{{ .RelPermalink }}" alt="" class="card-img-contain">
-          {{ else }}
-            <img src="{{ .RelPermalink }}" alt="" class="card-img-cover">
-          {{ end }}
-        {{ else }}
-          <div class="card-fallback"></div>
-        {{ end }}
-      </div>
-      <span class="card-caption">{{ .Title }}</span>
+    {{ $portrait := false }}
+    {{ if eq .Section "artists" }}{{ $portrait = .Resources.GetMatch "cover.*" }}{{ end }}
+    <a class="directory-card{{ if $portrait }} directory-card--portrait{{ end }}" href="{{ .Permalink }}">
+      {{ with $portrait }}
+        <img class="directory-portrait" src="{{ .RelPermalink }}" alt=""
+          width="80" height="80" loading="lazy" decoding="async">
+      {{ end }}
+      <span>{{ .Title }}</span>
+      <small>
+        {{ if eq .Kind "term" }}{{ len .RegularPages }}{{ else }}{{ len .RegularPagesRecursive }}{{ end }} recordings
+        {{ if not .Date.IsZero }} · {{ .Date.Format "2006" }}{{ end }}
+        <span aria-hidden="true">↗</span>
+      </small>
     </a>
   {{ end }}
 </div>

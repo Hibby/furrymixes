@@ -6,7 +6,7 @@ date: 2024-05-26
 
 artists: ["kittz"]
 
-genres: ["UK Garage & Bass", "Breaks & Electronic", "Pop & Open Format"]
+genres: ["UK Garage & Bassline", "Breaks & Electronic", "Pop & Open Format"]
 venue: "Animalz"
 original_genres: ["uk garage", "bassline", "hip hop", "breaks"]
 ---

@@ -1,0 +1,11 @@
+{{- $result := dict "url" "" "source" "" "platform" "" "height" 166 -}}
+{{- with .Params.embed -}}
+  {{- $source := .url | default "" -}}
+  {{- if findRE `^https?://([a-zA-Z0-9-]+\.)?mixcloud\.com/` $source -}}
+    {{- $feed := $source | replaceRE `^https?://([a-zA-Z0-9-]+\.)?mixcloud\.com` "" | urlquery -}}
+    {{- $result = dict "url" (printf "https://player-widget.mixcloud.com/widget/iframe/?feed=%s" $feed) "source" $source "platform" "Mixcloud" "height" (.height | default 400) -}}
+  {{- else if findRE `^https?://([a-zA-Z0-9-]+\.)?soundcloud\.com/` $source -}}
+    {{- $result = dict "url" (printf "https://w.soundcloud.com/player/?url=%s&color=%%238b5cf6&auto_play=false&show_comments=true&visual=true" ($source | urlquery)) "source" $source "platform" "SoundCloud" "height" (.height | default 166) -}}
+  {{- end -}}
+{{- end -}}
+{{- return $result -}}

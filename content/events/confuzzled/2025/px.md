@@ -6,7 +6,7 @@ date: 2025-05-25T21:00:00+01:00
 
 artists: ["px"]
 
-genres: ["Drum & Bass", "UK Garage & Bass", "Disco & Funk"]
+genres: ["Drum & Bass", "UK Garage & Bassline", "Disco & Funk"]
 
 venue: "Mainstage"
 original_genres: ["italo disco", "disco", "uk garage", "Drum & bass"]

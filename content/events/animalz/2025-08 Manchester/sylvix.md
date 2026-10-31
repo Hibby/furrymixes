@@ -3,7 +3,7 @@ embed:
   url: "https://www.mixcloud.com/sylvix/mancfurs-x-animalz-summer-party-2025-house/"
 date: 2025-08-10
 artists: ["Sylvix"]
-genres: ["House", "UK Garage & Bass"]
+genres: ["House", "UK Garage & Bassline"]
 title: ""
 original_genres: ["house", "uk garage", "future garage", "future house", "tech house"]
 ---

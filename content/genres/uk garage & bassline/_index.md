@@ -1,5 +1,5 @@
 ---
-title: "UK Garage & Bass"
+title: "UK Garage & Bassline"
 url: "/genres/uk-garage-bass/"
 description: "UK garage, 2-step, bassline and UK bass."
 ---

@@ -3,7 +3,7 @@ embed:
   url: "https://www.mixcloud.com/snowy1256/kitkatz-sussex-furs-summer-party-b2b-w-liamm/"
 date: 2026-07-16
 artists: ["Kallax", "KitKatz", "Liamm"]
-genres: ["UK Garage & Bass"]
+genres: ["UK Garage & Bassline"]
 title: "KitKatz - Sussex Furs 2026 Summer Party - B2B w/ Liamm"
 original_genres: ["uk garage", "bassline", "speed garage"]
 ---

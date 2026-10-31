@@ -3,8 +3,9 @@ embed:
   url: "https://www.mixcloud.com/snowy1256/kitkatz-you-me-berkshirefurs-last-howl-of-summer-2026/"
 date: 2026-09-27T17:00:00+0100
 artists: ["kallax","liamm"]
-genres: ["speed garage", "garage (ukg)", "house", "multi-genre"]
+genres: ["House", "UK Garage & Bassline", "Pop & Open Format"]
 title: ""
+original_genres: ["speed garage", "garage (ukg)", "house", "multi-genre"]
 ---
 
 The live recording of our KitKatz (Liamm b2b Kallax) set at the BerkshireFurs Last Howl of Summer party.

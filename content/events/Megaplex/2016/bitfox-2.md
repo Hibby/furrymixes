@@ -3,8 +3,9 @@ embed:
   url: "https://www.mixcloud.com/bit-fox/enter-the-magic-megaplex-2016-tryout-mix/"
 date: 2016-05-03
 artists: ["bitfox"]
-genres: ["house", "tropical", "indie", "electro house", "throwbacks"]
+genres: ["House"]
 title: ""
+original_genres: ["house", "tropical", "indie", "electro house", "throwbacks"]
 ---
 
 Here's my tryout mix for this year's Megaplex convention in Orlando, FL.

@@ -1,18 +1,53 @@
 {{ define "main" }}
-<content>
-  {{ .Content }}
-
-  {{ $sets := where site.RegularPages "Type" "events" }}
-
-  <h2>Latest Sets</h2>
-  {{ range $sets.ByDate.Reverse }}
-  <div style="margin-bottom:2em">
-    <a href="{{ .Permalink }}"><strong>{{ partial "set-title.html" . }}</strong></a>
-    {{ partial "player.html" . }}
+<section class="intro">
+  <p class="eyebrow">The animals party harder after dark.</p>
+  <h1 class="sr-only">{{ site.Title }}</h1>
+  <p>DJ sets from furries around the world. Find an old favourite or discover someone new</p>
+  <h2 class="explore-heading">Explore all</h2>
+  <div class="intro-actions">
+    <a class="button" href="{{ "/sets/" | relURL }}">Sets →</a>
+    <a class="button" href="{{ "/events/" | relURL }}">Events →</a>
+    <a class="button" href="{{ "/artists/" | relURL }}">Artists →</a>
+    <a class="button" href="{{ "/genres/" | relURL }}">Genres →</a>
   </div>
-  {{ else }}
-  <p>No sets yet</p>
+</section>
+<section>
+  <div class="section-heading">
+    <h2>Latest sets</h2>
+    <a href="{{ "/sets/" | relURL }}">All recordings →</a>
+  </div>
+  <div class="set-list">
+    {{ range first 6 (where site.RegularPages "Type" "events").ByDate.Reverse }}
+      {{ partial "set-card.html" . }}
+    {{ end }}
+  </div>
+</section>
+<section>
+  <div class="section-heading">
+    <h2>Explore events</h2>
+    <a href="{{ "/events/" | relURL }}">All events →</a>
+  </div>
+  {{ with site.GetPage "/events" }}
+    {{ partial "card-grid.html" (first 6 .Sections.ByTitle) }}
   {{ end }}
-
-</content>
+</section>
+<section>
+  <div class="section-heading">
+    <h2>Discover artists</h2>
+    <a href="{{ "/artists/" | relURL }}">Artist directory →</a>
+  </div>
+  {{ with site.GetPage "/artists" }}
+    {{ partial "card-grid.html" (first 8 .Pages.ByTitle) }}
+  {{ end }}
+</section>
+<section>
+  <h2>Find your sound</h2>
+  {{ with site.GetPage "/genres" }}
+    {{ partial "card-grid.html" .Pages.ByTitle }}
+  {{ end }}
+</section>
+<section class="community prose">
+  <h2>Made with love, Røde</h2>
+  {{ .Content }}
+</section>
 {{ end }}

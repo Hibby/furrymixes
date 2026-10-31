@@ -27,14 +27,20 @@ class TaxonomyTests(unittest.TestCase):
 
     def test_approved_categories_rules_and_aliases(self):
         self.assertEqual(set(self.taxonomy.categories), {'House', 'Techno', 'Trance', 'Drum & Bass',
-                         'UK Garage & Bass', 'Dubstep & Bass', 'Hard Dance', 'Disco & Funk',
+                         'UK Garage & Bassline', 'Dubstep', 'Hard Dance', 'Disco & Funk',
                          'Breaks & Electronic', 'Pop & Open Format', 'Chill & Ambient', 'Alternative & Other'})
         for label in ('EDM', 'edm', 'EdM', 'Electric House', 'electro house'):
             self.assertEqual(self.classify([label])['genres'], ['House'])
-        self.assertEqual(self.classify(['EDM', 'dubstep', 'techno', 'EDM'])['genres'], ['House', 'Techno', 'Dubstep & Bass'])
-        self.assertEqual(self.classify(['Drumstep'])['genres'], ['Drum & Bass', 'Dubstep & Bass'])
+        self.assertEqual(self.classify(['EDM', 'dubstep', 'techno', 'EDM'])['genres'], ['House', 'Techno', 'Dubstep'])
+        self.assertEqual(self.classify(['Drumstep'])['genres'], ['Drum & Bass', 'Dubstep'])
         self.assertEqual(self.classify(['breakbeat hardcore', 'hardcore breaks'])['genres'], ['Hard Dance'])
         self.assertEqual(self.classify(['bass funk', 'Indie Disco'])['genres'], ['Disco & Funk'])
+
+    def test_renamed_categories_keep_urls_and_source_classification(self):
+        self.assertEqual(self.taxonomy.categories['Dubstep'], 'dubstep-bass')
+        self.assertEqual(self.taxonomy.categories['UK Garage & Bassline'], 'uk-garage-bass')
+        self.assertEqual(self.classify(['future bass'])['genres'], ['Dubstep'])
+        self.assertEqual(self.classify(['bassline'])['genres'], ['UK Garage & Bassline'])
 
     def test_unknown_contextual_and_metadata_labels(self):
         labels = ['Dance', 'Dance & EDM', 'Mainstage EDM', 'Festival EDM', 'Bass', 'Bass Music',
@@ -60,9 +66,9 @@ class TaxonomyTests(unittest.TestCase):
         core = self.classify(['genrefluid', 'drum & bass,funk,dubstep,dance & edm'], 'https://soundcloud.com/threadfiend/core-element-2026-ritual')
         self.assertEqual(core['genres'], self.classify(['genrefluid'], 'https://soundcloud.com/threadfiend/infurno-2026')['genres'])
         self.assertEqual(self.classify(['edm', 'future house'], 'https://www.mixcloud.com/Spirou333/spirous-dj-livestream-23052023/')['genres'],
-                         ['House', 'Drum & Bass', 'Dubstep & Bass', 'Hard Dance'])
+                         ['House', 'Drum & Bass', 'Dubstep', 'Hard Dance'])
         self.assertEqual(self.classify(['dubstep', 'darkstep'], 'https://www.mixcloud.com/sylvix/burrow-beats-a-dark-140midtempo-minimix/')['genres'],
-                         ['Drum & Bass', 'Dubstep & Bass'])
+                         ['Drum & Bass', 'Dubstep'])
         self.assertEqual(source_key('http://www.mixcloud.com/Artist/Set/?utm=test'), 'https://mixcloud.com/Artist/Set')
 
     def test_dispositions_and_canonical_validation(self):

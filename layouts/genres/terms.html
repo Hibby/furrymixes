@@ -5,10 +5,10 @@
 {{ range .Pages }}
   {{ if not (isset hugo.Data.genre_taxonomy.categories .Title) }}{{ errorf "Unapproved public genre: %s" .Title }}{{ end }}
 {{ end }}
-<content>
+<section>
   {{ partial "page-header.html" . }}
-  {{ .Content }}
+  <div class="prose">{{ .Content }}</div>
 
   {{ partial "card-grid.html" .Pages.ByTitle }}
-</content>
+</section>
 {{ end }}

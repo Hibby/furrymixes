@@ -3,7 +3,7 @@ embed:
   url: "https://www.mixcloud.com/sylvix/sylvix-brightsmith-beats-cfz-2026/"
 date: 2026-05-24
 artists: ["Sylvix"]
-genres: ["House", "UK Garage & Bass"]
+genres: ["House", "UK Garage & Bassline"]
 title: ""
 venue: "Brightsmith"
 original_genres: ["future garage", "tech house", "future house", "deep house"]

@@ -1,0 +1,26 @@
+{{ $embed := partial "embed-data.html" . }}
+{{ $id := printf "player-%s" (md5 .RelPermalink) }}
+<article class="set-card">
+  {{ partial "set-cover.html" . }}
+  <div class="set-info">
+    <h3><a href="{{ .Permalink }}">{{ partial "set-title.html" . }}</a></h3>
+    {{ partial "set-meta.html" . }}
+    <div class="set-actions">
+      {{ if $embed.url }}
+        <a class="source-link" href="{{ $embed.source }}">{{ $embed.platform }} ↗</a>
+      {{ else }}
+        {{ with .Params.embed.url }}<a href="{{ . }}">Original recording ↗</a>{{ end }}
+      {{ end }}
+      <a class="detail-link" href="{{ .Permalink }}">Set details</a>
+    </div>
+  </div>
+  {{ if $embed.url }}
+    <button type="button" class="play-toggle" hidden
+      aria-expanded="false" aria-controls="{{ $id }}"
+      data-player-src="{{ $embed.url | safeURL }}"
+      data-player-height="{{ $embed.height }}"
+      data-player-title="{{ $embed.platform }} player: {{ partial "set-title.html" . | plainify }}">Play set<span class="sr-only">: {{ partial "set-title.html" . }}</span></button>
+  {{ end }}
+  <div id="{{ $id }}" class="player-region" role="region"
+    aria-label="Recording player" hidden></div>
+</article>

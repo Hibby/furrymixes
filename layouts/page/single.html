@@ -1,6 +1,6 @@
 {{ define "main" }}
-<content>
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
-</content>
+<article>
+  {{ partial "page-header.html" . }}
+  <div class="prose">{{ .Content }}</div>
+</article>
 {{ end }}

@@ -1,6 +1,6 @@
 baseURL = 'https://furrymix.es'
 locale = 'en-us'
-title = 'FurryMix.es'
+title = 'furrymix.es'
 theme = "hugo-bearblog"
 copyright = "Røde (CC BY 4.0)"
 enableRobotsTXT = true
@@ -23,7 +23,7 @@ ignoreFiles = ['uncategorised/']
 [menu]
   [[menu.main]]
     name = "Sets"
-    url = "/"
+    url = "/sets/"
     weight = 1
   [[menu.main]]
     name = "Events"
