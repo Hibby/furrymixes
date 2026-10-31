@@ -4,3 +4,6 @@ content/uncategorised/
 .DS_Store
 __pycache__/
 *.py[cod]
+
+.cache/
+assets/covers/uncategorised/

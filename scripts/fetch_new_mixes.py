@@ -32,6 +32,7 @@ import urllib.request
 from pathlib import Path
 
 from taxonomy import Taxonomy
+from artwork import CoverStore, HTTPClient, mixcloud_api_url, mixcloud_artwork, soundcloud_artwork, RateLimited
 
 ROOT = Path(__file__).resolve().parent.parent
 ARTISTS_MD = ROOT / "ARTISTS.md"
@@ -53,6 +54,7 @@ def is_demo(mix):
 
 
 VERBOSE = False
+HTTP = HTTPClient()
 
 
 def vlog(msg):
@@ -61,27 +63,13 @@ def vlog(msg):
 
 
 def http_get(url, headers=None):
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, **(headers or {})})
-    if VERBOSE:
-        vlog(f"GET {url}")
-        for k, v in req.header_items():
-            vlog(f"  > {k}: {v}")
-        vlog("  > (urllib also adds Host and Connection: close at send time)")
-    with urllib.request.urlopen(req, timeout=15) as resp:
-        if VERBOSE:
-            vlog(f"  < HTTP {resp.status}")
-            for k, v in resp.headers.items():
-                vlog(f"  < {k}: {v}")
-        return resp.read()
+    vlog(f"GET {url}")
+    return HTTP.read(url, max_bytes=8 * 1024 * 1024, headers={"User-Agent": USER_AGENT, **(headers or {})})
 
 
-# Mixcloud's HTML pages sit behind Cloudflare, which starts returning 403s
-# if they're requested in a fast burst (the JSON API is separate and more
-# tolerant). These keep page scraping polite enough not to trip that.
-PAGE_FETCH_DELAY = 2.0      # seconds between successive page fetches
-PAGE_FETCH_RETRIES = 3      # attempts per page before giving up on it
-PAGE_BACKOFF_BASE = 15      # seconds; doubles each retry (15, 30, ...)
-MAX_CONSECUTIVE_FAILURES = 3  # stop scraping pages for this run after this many
+# Public show metadata is requested only through api.mixcloud.com.
+PAGE_FETCH_DELAY = 0.5
+MAX_CONSECUTIVE_FAILURES = 3
 
 
 class PageFetchFailed(Exception):
@@ -89,38 +77,11 @@ class PageFetchFailed(Exception):
 
 
 def http_get_page_with_backoff(url):
-    """Fetches an HTML page, backing off and retrying on 403/429 rather
-    than failing immediately. Honours a Retry-After header if sent.
-    Raises PageFetchFailed if every attempt fails."""
-    last_exc = None
-    for attempt in range(1, PAGE_FETCH_RETRIES + 1):
-        try:
-            return http_get(url).decode("utf-8", errors="ignore")
-        except urllib.error.HTTPError as exc:
-            last_exc = exc
-            if VERBOSE:
-                vlog(f"  < HTTP {exc.code} {exc.reason}")
-                if exc.headers:
-                    for k, v in exc.headers.items():
-                        vlog(f"  < {k}: {v}")
-                try:
-                    body = exc.read().decode("utf-8", errors="ignore")
-                except Exception:
-                    body = ""
-                title = re.search(r"<title>(.*?)</title>", body, re.IGNORECASE | re.DOTALL)
-                vlog(f"  < page title: {title.group(1).strip() if title else '(none)'}")
-                vlog(f"  < body starts: {body[:300]!r}")
-            if exc.code not in (403, 429) or attempt == PAGE_FETCH_RETRIES:
-                break
-            retry_after = exc.headers.get("Retry-After") if exc.headers else None
-            wait = int(retry_after) if retry_after and retry_after.isdigit() \
-                else PAGE_BACKOFF_BASE * (2 ** (attempt - 1))
-            print(f"    ~ HTTP {exc.code}, backing off {wait}s (attempt {attempt}/{PAGE_FETCH_RETRIES})")
-            time.sleep(wait)
-        except (urllib.error.URLError, TimeoutError) as exc:
-            last_exc = exc
-            break
-    raise PageFetchFailed(str(last_exc))
+    """Shared HTTP client provides pacing, bounded retries and Retry-After handling."""
+    try:
+        return http_get(url).decode("utf-8")
+    except (urllib.error.URLError, TimeoutError, RateLimited) as exc:
+        raise PageFetchFailed(str(exc)) from exc
 
 
 def http_get_json(url, headers=None):
@@ -206,7 +167,7 @@ def split_description_and_tracklist(full_text):
 
 def resolve_description_and_tracklist(mix):
     """Returns (description, tracklist). Prefers an explicitly-fetched
-    mix['tracklist'] (Mixcloud, scraped from its own tracklist widget --
+    mix['tracklist'] (Mixcloud, returned by its show API --
     see fetch_mixcloud_extras). Otherwise falls back to splitting
     mix['description'] on a Tracklist heading, which is how SoundCloud
     DJs typically write it, combined into one description blob."""
@@ -239,9 +200,11 @@ def fetch_mixcloud_mixes(profile_url):
                 # Mixcloud's list API doesn't return the show description --
                 # left blank here and filled in later, per-mix, only for
                 # mixes that turn out to be genuinely new (see
-                # fetch_mixcloud_description below), to avoid an extra page
+                # fetch_mixcloud_extras below), to avoid an extra page
                 # fetch for every mix in an artist's whole history.
                 "description": "",
+                "artwork_url": mixcloud_artwork(item),
+                "artwork_known": "pictures" in item,
             })
         url = data.get("paging", {}).get("next")
         if url:
@@ -265,7 +228,7 @@ def build_featuring_line(sections, shown=5):
 
 
 def fetch_mixcloud_extras(show_url):
-    """Returns (description, tracklist) for a Mixcloud show via Mixcloud's
+    """Returns description, tracklist and artwork metadata for a Mixcloud show via Mixcloud's
     own public API (api.mixcloud.com/<user>/<slug>/), not the HTML page.
 
     The HTML pages sit behind a Cloudflare managed challenge ("Just a
@@ -276,8 +239,7 @@ def fetch_mixcloud_extras(show_url):
 
     Returns None if the call fails, so the caller skips writing a stub
     and retries next run."""
-    path = re.sub(r"^https?://(www\.)?mixcloud\.com", "", show_url)
-    api_url = f"https://api.mixcloud.com{path}"
+    api_url = mixcloud_api_url(show_url)
     try:
         data = json.loads(http_get_page_with_backoff(api_url))
     except (PageFetchFailed, json.JSONDecodeError) as exc:
@@ -288,7 +250,8 @@ def fetch_mixcloud_extras(show_url):
     tracklist = build_featuring_line(data.get("sections"))
     vlog(f"  API: description {len(description)} chars, "
          f"{len(data.get('sections') or [])} track section(s)")
-    return description, tracklist
+    return dict(description=description, tracklist=tracklist,
+                artwork_url=mixcloud_artwork(data), artwork_known=True)
 
 
 # ---------------------------------------------------------------------------
@@ -348,6 +311,8 @@ def fetch_soundcloud_mixes(profile_url):
                 "tags": tags,
                 "created": (item.get("created_at") or "")[:10],
                 "description": (item.get("description") or "").strip(),
+                "artwork_url": soundcloud_artwork(item),
+                "artwork_known": True,
             })
         url = data.get("next_href")
         if url:
@@ -476,8 +441,7 @@ def main():
     parser.add_argument("--artist", help="Only process this artist name (as written in ARTISTS.md)")
     parser.add_argument(
         "-v", "--verbose", action="store_true",
-        help="Print request/response headers for every HTTP call, plus the "
-             "title and start of the body for any error response",
+        help="Print requested metadata URLs",
     )
     args = parser.parse_args()
     VERBOSE = args.verbose
@@ -493,10 +457,11 @@ def main():
     artist_slugs = known_artist_slugs()
     vocab = event_vocabulary()
     taxonomy = Taxonomy()
+    covers = CoverStore(ROOT, client=HTTP)
 
     created = 0
     consecutive_failures = 0
-    pages_blocked = False
+    metadata_blocked = False
     skipped_for_retry = 0
     for artist in artists:
         name, platform, profile_url = artist["name"], artist["platform"], artist["profile_url"]
@@ -506,7 +471,7 @@ def main():
                 mixes = fetch_mixcloud_mixes(profile_url)
             else:
                 mixes = fetch_soundcloud_mixes(profile_url)
-        except (urllib.error.URLError, RuntimeError, ValueError, KeyError) as exc:
+        except (urllib.error.URLError, RuntimeError, ValueError, KeyError, RateLimited) as exc:
             print(f"  ! failed to fetch: {exc}", file=sys.stderr)
             continue
 
@@ -522,7 +487,7 @@ def main():
             # fetch both together now, but only for mixes we're actually
             # about to write a file for.
             if platform == "Mixcloud" and not mix["description"] and "tracklist" not in mix:
-                if pages_blocked:
+                if metadata_blocked:
                     skipped_for_retry += 1
                     continue
                 extras = fetch_mixcloud_extras(mix["url"])
@@ -534,15 +499,18 @@ def main():
                     skipped_for_retry += 1
                     print(f"  ~ skipped for now, will retry next run: {mix['url']}")
                     if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
-                        pages_blocked = True
+                        metadata_blocked = True
                         print(
                             f"  ! {consecutive_failures} page fetches failed in a row -- "
-                            "pausing Mixcloud page scraping for the rest of this run",
+                            "pausing Mixcloud show metadata requests for the rest of this run",
                             file=sys.stderr,
                         )
                     continue
                 consecutive_failures = 0
-                mix["description"], mix["tracklist"] = extras
+                # Preserve list-response artwork if details omit the pictures field.
+                if not extras.get("artwork_url") and mix.get("artwork_url"):
+                    extras["artwork_url"] = mix["artwork_url"]
+                mix.update(extras)
 
             artist_field = resolve_artist_field(name, mix, artist_slugs)
 
@@ -564,14 +532,25 @@ def main():
             if not classification["genres"]:
                 print("     ! genre review required; retained in staging")
             if args.dry_run:
+                status, note = covers.ensure(path, mix["url"], artwork_url=mix.get("artwork_url"),
+                                             artwork_known=mix.get("artwork_known", False), dry_run=True)
+                print(f"     artwork {status}: {note}")
                 continue
 
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(stub)
             known.add(normalize_url(mix["url"]))
             created += 1
+            # Cover retrieval is optional and must never roll back a valid imported set.
+            try:
+                status, note = covers.ensure(path, mix["url"], artwork_url=mix.get("artwork_url"),
+                                             artwork_known=mix.get("artwork_known", False))
+                print(f"     artwork {status}: {note}")
+            except Exception as exc:
+                print(f"     artwork failed (set retained): {exc}", file=sys.stderr)
 
     if not args.dry_run:
+        covers.save()
         print(f"\nWrote {created} new stub file(s) under content/uncategorised/")
     if skipped_for_retry:
         print(

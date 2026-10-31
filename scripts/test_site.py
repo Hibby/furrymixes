@@ -52,7 +52,7 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(directories, set(self.taxonomy.categories.values()))
         index = (self.build / 'genres/index.html').read_text()
         self.assertIn('class=card-grid', index)
-        self.assertIn('class=page-header', index)
+        self.assertNotIn('<div class=page-header', index)
         links = HTML(index).links
         genres = {urlsplit(link).path for link in links if urlsplit(link).path.startswith('/genres/') and urlsplit(link).path != '/genres/'}
         self.assertEqual(genres, {'/genres/' + slug + '/' for slug in directories})
@@ -91,6 +91,7 @@ class SiteTests(unittest.TestCase):
         self.assertTrue((self.build / 'events/index.html').exists())
         self.assertTrue((self.build / 'artists/index.html').exists())
         self.assertFalse((self.build / 'uncategorised').exists())
+        self.assertFalse((self.build / 'covers/uncategorised').exists())
         for path in self.build.rglob('*.xml'):
             root = ET.parse(path).getroot()
             for element in root.iter():

@@ -1,2 +1,5 @@
 # Safe parsing for catalogue validation and provenance-preserving metadata updates.
 PyYAML>=6.0,<7
+
+# Decode/verify artwork safely; files are never converted or recompressed.
+Pillow>=12.0,<13

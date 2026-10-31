@@ -1,0 +1,37 @@
+{{- /* Metadata helper for future cards; no image processing or remote requests. */ -}}
+{{- $result := dict "available" false "url" "" "initials" "♪" -}}
+{{- $name := "" -}}
+{{- with .GetTerms "artists" -}}{{ $name = (index . 0).Title }}{{- else -}}
+  {{- with .Params.artists -}}{{ $name = index . 0 }}{{- end -}}
+{{- end -}}
+{{- with $name -}}
+  {{- $initials := "" -}}
+  {{- range first 2 (split . " ") -}}{{ with . }}{{ $initials = printf "%s%s" $initials (substr . 0 1 | upper) }}{{ end }}{{- end -}}
+  {{- $result = merge $result (dict "initials" $initials) -}}
+{{- end -}}
+{{- $image := false -}}
+{{- $manual := or .Params.artwork .Params.cover .Params.image -}}
+{{- if and $manual (eq (printf "%T" $manual) "string") -}}
+  {{- if and (not (in $manual "://")) (not (in $manual "..")) -}}
+    {{- if hasPrefix $manual "/" -}}
+      {{- if fileExists (printf "static%s" $manual) -}}
+        {{- $result = merge $result (dict "available" true "url" ($manual | relURL)) -}}
+      {{- end -}}
+    {{- else -}}
+      {{- $image = resources.Get $manual -}}
+      {{- if not $image -}}{{ $image = .Resources.Get $manual }}{{- end -}}
+      {{- if not $image -}}{{ with .Parent }}{{ $image = .Resources.Get $manual }}{{ end }}{{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- with .File -}}
+    {{- $base := printf "covers/%s%s-cover" .Dir .BaseFileName -}}
+    {{- range slice ".jpg" ".jpeg" ".png" ".webp" ".gif" -}}
+      {{- if not $image -}}{{ $image = resources.Get (printf "%s%s" $base .) }}{{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- with $image -}}
+  {{- $result = merge $result (dict "available" true "url" .RelPermalink) -}}
+{{- end -}}
+{{- return $result -}}

@@ -1,3 +1,4 @@
+{{- $artwork := partial "set-artwork.html" . -}}
 {{ with .Params.embed }}
   {{ if in .url "mixcloud.com" }}
     {{ $feed := .url | replaceRE `^https?://(www\.)?mixcloud\.com` "" | urlquery }}

@@ -154,3 +154,72 @@ old genre subscribers must choose a new canonical feed. Set URLs are unchanged.
 GitHub Actions runs catalogue validation and the production tests before building
 for GitHub Pages. Git history preserves the pre-migration policy and catalogue;
 normal operation has no dependency on audit reports or source snapshots.
+
+## Local set artwork
+
+Artwork is optional and uses one shared pipeline for imports and backfills.
+Mixcloud show artwork comes from its official API, including responses already
+fetched for descriptions/tags. SoundCloud imports use track `artwork_url`;
+backfills use its public oEmbed endpoint. Artist avatars are not used as a fallback.
+No artwork metadata is scraped from Mixcloud or SoundCloud webpages.
+
+Cover files mirror the Markdown path, without changing the content hierarchy:
+
+```text
+content/events/infurno/2026/threadfiend.md
+assets/covers/events/infurno/2026/threadfiend-cover.jpg
+```
+
+JPEG, PNG, WebP and GIF are supported. Extensions come from decoded image content,
+not URL suffixes or HTTP headers. Pillow verifies complete images and bounds
+pixel/frame counts; files are never resized, converted or recompressed. Downloads
+are limited to 8 MiB and are atomically installed only after validation.
+
+New imports automatically download artwork after saving the set. Missing images,
+deleted sources and download failures never discard a valid import. Dry-run writes
+neither artwork nor its cache. Builds read only local images and need no API access.
+
+Backfill or retry existing content:
+
+```sh
+python3 scripts/backfill_artwork.py --dry-run
+python3 scripts/backfill_artwork.py
+python3 scripts/backfill_artwork.py --scope catalogue
+python3 scripts/backfill_artwork.py --retry-unavailable
+python3 scripts/backfill_artwork.py --refresh --scope catalogue
+```
+
+Default runs skip valid local covers. Interrupted downloads leave no partial image;
+successful files provide the resume checkpoint. `--limit N` can restrict a run.
+Temporary failures are retried on a subsequent run. Known missing/private/deleted
+sources are cached in Git-ignored `.cache/artwork.json`; `--retry-unavailable`
+rechecks them explicitly. Retry-After cooldowns survive ordinary runs; wait for the
+indicated interval before retrying a rate-limited service. Requests are sequential,
+paced per host, timed out and bounded in retries. There is no scraping fallback.
+
+`--refresh` replaces ordinary automatic covers, even if their source format changes.
+If refresh fails, the existing image remains. For a hand-supplied cover, use the
+ordinary filename and default backfills will leave it alone. To protect an explicit
+manual choice even during refresh, use an assets-relative or static-local override:
+
+```yaml
+artwork: covers/manual/my-special-set.png  # file under assets/
+# or: artwork: /images/my-special-set.png  # file under static/
+```
+
+The backfill never edits Markdown. Manual overrides are never overwritten; missing
+manual files are reported for correction rather than silently replaced. Existing
+bundle-relative `cover`/`image` choices are also respected. Avoid remote URLs or
+parent-directory paths in overrides.
+
+Staging artwork lives under `assets/covers/uncategorised/`, which remains Git-ignored
+along with its Markdown. It is not published by normal Hugo builds. Commit artwork
+only when publishing the corresponding set; move the matching image to mirror the
+set's new content path. Deferred recordings and excluded tracks remain untouched.
+
+Future templates can use `partial "set-artwork.html" .`, which returns `available`,
+`url` and artist `initials`. The existing player partial resolves/publishes local
+resources without displaying a new image or changing playback. Missing art returns
+an empty URL; the optional `set-artwork-fallback.html` partial supplies a square CSS
+gradient and readable initials/music symbol. Neither new cards nor player
+interactions are implemented here.
