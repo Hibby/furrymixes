@@ -127,12 +127,10 @@ nav a:hover,nav a[aria-current] {
   color:var(--accent);
 }
 .intro {
-  max-width:740px;
   padding-block:.5rem 0;
 }
 .intro>p:not(.eyebrow) {
   font-size:1.1rem;
-  max-width:59ch;
   color:var(--muted);
 }
 .eyebrow {
@@ -328,6 +326,9 @@ nav a:hover,nav a[aria-current] {
   max-width:75ch;
   overflow-wrap:anywhere;
   margin-bottom:2rem;
+}
+.community.prose {
+  max-width:none;
 }
 .prose h2,.prose h3 {
   margin-top:1.8rem;
