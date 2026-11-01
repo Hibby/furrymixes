@@ -1,7 +1,7 @@
 baseURL = 'https://furrymix.es'
 locale = 'en-us'
 title = 'furrymix.es'
-theme = "hugo-bearblog"
+theme = "furrymix"
 copyright = "Røde (CC BY 4.0)"
 enableRobotsTXT = true
 ignoreFiles = ['uncategorised/']

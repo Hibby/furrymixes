@@ -41,7 +41,7 @@ Helpful information for adding an artist page:
 
 If you're comfortable with github, pull requests are welcome!
 ### Sets
-The template for a set is contained in [archetypes/events.md](archetypes/events.md).
+The template for a set is contained in [themes/furrymix/archetypes/events.md](themes/furrymix/archetypes/events.md).
 
 Sets go in content/{event}/{edition}/{artist}.md
 
@@ -98,10 +98,9 @@ and approve classification before bringing them into the archive.
 
 ### Import and validate
 
-Use Python 3.11+ and Hugo 0.162 or newer, with the theme submodule checked out:
+Use Python 3.11+ and Hugo 0.162 or newer. The Furrymix theme is included in this repository:
 
 ```sh
-git submodule update --init --recursive
 python3 -m pip install -r scripts/requirements.txt
 python3 scripts/fetch_new_mixes.py --dry-run
 python3 scripts/fetch_new_mixes.py
@@ -229,13 +228,15 @@ and never contacts a remote service.
 Run `hugo server` for a local preview. The production build remains
 `hugo --gc --minify`; no frontend package installation is needed.
 
-The local `layouts/_default/baseof.html` owns the page shell, navigation,
-footer and fingerprinted assets. Bearblog remains as the small upstream
-submodule for fallback templates (including robots); its stylesheet and page
-shell are not loaded. Existing RSS templates and content URLs are retained.
-`layouts/index.html` shows six recent sets and archive directories. `/sets/`
-is the new chronological catalogue. `layouts/events/`, `layouts/artists/`
-and `layouts/genres/` handle event editions, artist recordings and canonical
+The bundled `themes/furrymix/layouts/_default/baseof.html` owns the page shell, navigation,
+footer and fingerprinted assets. Furrymix includes its own robots template and
+has no dependency on Bear Blog. Existing RSS templates and content URLs are retained.
+See [the theme README](themes/furrymix/README.md) for its structure and content contract.
+Site analytics remain in `layouts/partials/custom_head.html`, and the approved
+genre policy is enforced by the site override in `layouts/genres/terms.html`.
+`themes/furrymix/layouts/index.html` shows six recent sets and archive directories. `/sets/`
+is the new chronological catalogue. `themes/furrymix/layouts/events/`, `themes/furrymix/layouts/artists/`
+and `themes/furrymix/layouts/genres/` handle event editions, artist recordings and canonical
 genres. The shared `card-grid.html` renders text directories with counts,
 without requiring portraits or event images. Existing artist `cover.*` bundle
 images appear in artist directory cards and beside artist introductions, with
@@ -246,14 +247,14 @@ tracklists and event websites remain available where supplied.
 `partials/set-card.html` combines `set-cover.html`, `set-meta.html` and
 `set-title.html`. `set-list.html` paginates recording collections at 24 per
 page using Hugo's paginator; change that number there to adjust catalogue
-page size. On `/sets/`, `assets/js/infinite-sets.js` progressively fetches the
+page size. On `/sets/`, `themes/furrymix/assets/js/infinite-sets.js` progressively fetches the
 next static page as visitors scroll, appends its cards and updates a live status.
 A Load more button also supports keyboard/manual loading. Failed requests restore
 the page links; without JavaScript ordinary pagination remains available. No
 metadata or iframe requests are made while appending cards. A `sets:added` event
 enables playback buttons through the shared delegated click handler, retaining
 one active player across all loaded sets. Other listings keep pagination.
-The homepage's selection size is in `layouts/index.html`.
+The homepage's selection size is in `themes/furrymix/layouts/index.html`.
 Use `GetTerms` links so explicit canonical genre URLs remain authoritative.
 
 `set-cover.html` calls the unchanged Phase 3 `set-artwork.html` resolver:
@@ -267,14 +268,14 @@ Missing covers use initials and CSS in `set-artwork-fallback.html`.
 embed conventions, encodes source URLs as query parameters, and retains custom
 player heights. `player.html` renders the full player on recording pages.
 Cards contain only the embed URL as data, an empty hidden region, and ordinary
-recording/platform links. `assets/js/players.js` reveals the real buttons once
+recording/platform links. `themes/furrymix/assets/js/players.js` reveals the real buttons once
 handlers are attached. Clicking creates an iframe; closing or opening another
 card removes the old iframe to stop audio. A single local variable tracks the
 active button. `aria-expanded`, `aria-controls`, iframe titles and the focused
 button remain consistent. No autoplay is forced. Without JavaScript the detail
 and external listening links remain visible and the inactive buttons stay hidden.
 
-Edit `assets/css/site.css` for visual changes. The root custom properties define
+Edit `themes/furrymix/assets/css/site.css` for visual changes. The root custom properties define
 the dark default palette; `prefers-color-scheme: light` overrides colours only.
 System fonts need no external service. Layout classes handle the horizontal
 artwork cards and smaller screens; the expanded player spans the available

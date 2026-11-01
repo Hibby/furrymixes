@@ -4,7 +4,7 @@
     <link>{{ .Permalink }}</link>
     <description>Recent DJ sets on {{ .Site.Title }}</description>
     <generator>Hugo -- gohugo.io</generator>
-    {{ with .Site.LanguageCode }}<language>{{ . }}</language>{{ end }}
+    {{ with .Site.Language.Locale }}<language>{{ . }}</language>{{ end }}
     {{ with .OutputFormats.Get "RSS" }}
       {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{ end }}
