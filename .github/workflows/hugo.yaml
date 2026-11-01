@@ -30,7 +30,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
         with:
-          submodules: recursive
           fetch-depth: 0
           lfs: false
 
@@ -88,13 +87,6 @@ jobs:
           if [[ $(git rev-parse --is-shallow-repository) == true ]]; then
             echo "Fetching full Git history..."
             git fetch --unshallow
-          fi
-
-      - name: Initialize Git submodules
-        run: |
-          if [[ -f .gitmodules ]]; then
-            echo "Initializing Git submodules..."
-            git submodule update --init --recursive
           fi
 
       - name: Install Node.js dependencies

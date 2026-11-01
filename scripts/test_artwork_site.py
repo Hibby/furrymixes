@@ -38,6 +38,7 @@ class ArtworkSiteTests(unittest.TestCase):
 {{ if not $cover.available }}{{ partial "set-artwork-fallback.html" $cover }}{{ end }}
 {{ partial "player.html" . }}
 {{ end }}'''
+            (layouts / 'events').mkdir(parents=True, exist_ok=True)
             (layouts / 'events/single.html').write_text(template)
             parent = content / 'events/test/2026'
             covers = root / 'assets/covers/events/test/2026'

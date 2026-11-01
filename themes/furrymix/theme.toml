@@ -1,0 +1,14 @@
+name = "Furrymix"
+description = "A Hugo theme for DJ set archives, with event editions, artists, genres, and expandable players."
+homepage = "https://github.com/Hibby/furrymixes"
+min_version = "0.162.0"
+tags = ["music", "archive", "responsive", "dark mode"]
+features = ["rss", "pagination", "dark mode", "soundcloud", "mixcloud"]
+
+[author]
+  name = "Røde"
+
+[original]
+  name = "Hugo Bear Blog"
+  homepage = "https://github.com/janraasch/hugo-bearblog"
+  repo = "https://github.com/janraasch/hugo-bearblog"
